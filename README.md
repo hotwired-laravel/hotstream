@@ -1,5 +1,3 @@
-# Hotwired application starter kit for the Laravel framework.
-
 <p align="center" style="margin-top: 2rem; margin-bottom: 2rem;"><img src="/art/hotstream-logo.svg" alt="Logo Hotstream" /></p>
 
 <p align="center">
