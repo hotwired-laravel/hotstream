@@ -1,0 +1,326 @@
+<?php
+
+namespace Hotwired\Hotstream\Commands;
+
+use Exception;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Process;
+use Illuminate\Support\Str;
+
+class InstallCommand extends Command
+{
+    protected $signature = 'hotstream:install
+        {--teams : Indicates if team support should be installed}
+        {--api : Indicates if API support should be installed}
+        {--verification : Indicates if email verification support should be installed}
+    ';
+
+    protected $description = 'Install the Hotstream application starter kit';
+
+    public function handle()
+    {
+        // Publish...
+        $this->callSilent('vendor:publish', ['--tag' => 'hotstream-config', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'hotstream-migrations', '--force' => true]);
+
+        $this->callSilent('vendor:publish', ['--tag' => 'fortify-config', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'fortify-support', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'fortify-migrations', '--force' => true]);
+
+        // "Home" Route...
+        $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
+
+        if (file_exists(resource_path('views/welcome.blade.php'))) {
+            $this->replaceInFile('/home', '/dashboard', resource_path('views/welcome.blade.php'));
+            $this->replaceInFile('Home', 'Dashboard', resource_path('views/welcome.blade.php'));
+        }
+
+        // Fortify Provider...
+        $this->installServiceProviderAfter('RouteServiceProvider', 'FortifyServiceProvider');
+
+        // Configure Session...
+        $this->configureSession();
+
+        // Configure API...
+        if ($this->option('api')) {
+            $this->replaceInFile('// Features::api(),', 'Features::api(),', config_path('jetstream.php'));
+        }
+
+        // Configure Email Verification...
+        if ($this->option('verification')) {
+            $this->replaceInFile('// Features::emailVerification(),', 'Features::emailVerification(),', config_path('fortify.php'));
+        }
+
+        $this->installHotstreamStack();
+
+        // Emails...
+        File::ensureDirectoryExists(resource_path('views/emails'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/emails', resource_path('views/emails'));
+
+        // Tests...
+        $stubs = __DIR__.'/../../stubs/tests';
+
+        $this->removeComposerDevPackages(['phpunit/phpunit']);
+
+        if (! $this->requireComposerDevPackages(['pestphp/pest:^2.0', 'pestphp/pest-plugin-laravel:^2.0'])) {
+            return 1;
+        }
+
+        copy($stubs.'/Pest.php', base_path('tests/Pest.php'));
+        copy($stubs.'/ExampleTest.php', base_path('tests/Feature/ExampleTest.php'));
+        copy($stubs.'/Unit/ExampleTest.php', base_path('tests/Unit/ExampleTest.php'));
+        copy($stubs.'/Feature/AuthenticationTest.php', base_path('tests/Feature/AuthenticationTest.php'));
+        copy($stubs.'/Feature/EmailVerificationTest.php', base_path('tests/Feature/EmailVerificationTest.php'));
+        copy($stubs.'/Feature/PasswordConfirmationTest.php', base_path('tests/Feature/PasswordConfirmationTest.php'));
+        copy($stubs.'/Feature/PasswordResetTest.php', base_path('tests/Feature/PasswordResetTest.php'));
+        copy($stubs.'/Feature/RegistrationTest.php', base_path('tests/Feature/RegistrationTest.php'));
+    }
+
+    private function configureSession(): void
+    {
+        if (! class_exists('CreateSessionsTable')) {
+            try {
+                $this->call('session:table');
+            } catch (Exception $e) {
+                //
+            }
+        }
+
+        $this->replaceInFile("'SESSION_DRIVER', 'file'", "'SESSION_DRIVER', 'database'", config_path('session.php'));
+        $this->replaceInFile('SESSION_DRIVER=file', 'SESSION_DRIVER=database', base_path('.env'));
+        $this->replaceInFile('SESSION_DRIVER=file', 'SESSION_DRIVER=database', base_path('.env.example'));
+    }
+
+    private function installHotstreamStack(): bool
+    {
+        // Install Composer packages...
+        if (
+            ! $this->requireComposerPackages('hotwired/stimulus-laravel:^0.2') ||
+            ! $this->requireComposerPackages('hotwired/turbo-laravel:^1.12') ||
+            ! $this->requireComposerPackages('tonysm/importmap-laravel:^1.4') ||
+            ! $this->requireComposerPackages('tonysm/tailwindcss-laravel:^0.10')
+        ) {
+            return false;
+        }
+
+        // Sanctum...
+        $this->output->write(
+            Process::forever()
+                ->run([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path())
+                ->output()
+        );
+
+        // Importmaps...
+        copy(__DIR__ . '/../../stubs/routes/importmap.php', base_path('routes/'));
+
+        // Tailwind...
+        if (File::exists(resource_path('sass'))) {
+            File::deleteDirectory(resource_path('sass'));
+        }
+
+        File::ensureDirectoryExists(resource_path('css'));
+        copy(__DIR__.'/../../stubs/resources/css/app.css', resource_path('css/app.css'));
+        copy(__DIR__.'/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
+
+        // Directories...
+        File::ensureDirectoryExists(app_path('Actions/Fortify'));
+        File::ensureDirectoryExists(app_path('Actions/Hotstream'));
+        File::ensureDirectoryExists(app_path('View/Components'));
+        File::ensureDirectoryExists(resource_path('css'));
+        File::ensureDirectoryExists(resource_path('markdown'));
+        File::ensureDirectoryExists(resource_path('views/accounts'));
+        File::ensureDirectoryExists(resource_path('views/auth'));
+        File::ensureDirectoryExists(resource_path('views/components'));
+        File::ensureDirectoryExists(resource_path('views/layouts'));
+        File::ensureDirectoryExists(resource_path('views/profile'));
+        File::ensureDirectoryExists(resource_path('views/password'));
+        File::ensureDirectoryExists(resource_path('views/user'));
+        File::ensureDirectoryExists(resource_path('views/user-picture'));
+        File::ensureDirectoryExists(resource_path('views/api-tokens'));
+        File::ensureDirectoryExists(resource_path('views/two-factor-authentication'));
+        File::ensureDirectoryExists(resource_path('views/confirmed-two-factor-authentication'));
+        File::ensureDirectoryExists(resource_path('views/recovery-codes'));
+        File::ensureDirectoryExists(resource_path('views/device-sessions'));
+        File::ensureDirectoryExists(resource_path('views/deleted-device-sessions'));
+
+        // Terms Of Service / Privacy Policy...
+        copy(__DIR__.'/../../stubs/resources/markdown/terms.md', resource_path('markdown/terms.md'));
+        copy(__DIR__.'/../../stubs/resources/markdown/policy.md', resource_path('markdown/policy.md'));
+
+        // Service Providers...
+        copy(__DIR__.'/../../stubs/app/Providers/HotstreamServiceProvider.php', app_path('Providers/HotstreamServiceProvider.php'));
+        $this->installServiceProviderAfter('FortifyServiceProvider', 'HotstreamServiceProvider');
+
+        // Models...
+        copy(__DIR__.'/../../stubs/app/Models/User.php', app_path('Models/User.php'));
+
+        // Factories...
+        copy(__DIR__.'/../../database/factories/UserFactory.php', base_path('database/factories/UserFactory.php'));
+
+        // Actions...
+        copy(__DIR__.'/../../stubs/app/Actions/Fortify/CreateNewUser.php', app_path('Actions/Fortify/CreateNewUser.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Fortify/UpdateUserProfileInformation.php', app_path('Actions/Fortify/UpdateUserProfileInformation.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Jetstream/DeleteUser.php', app_path('Actions/Jetstream/DeleteUser.php'));
+
+        // Components...
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/components', resource_path('views/components'));
+
+        // View Components...
+        copy(__DIR__.'/../../stubs/app/View/Components/AppLayout.php', app_path('View/Components/AppLayout.php'));
+        copy(__DIR__.'/../../stubs/app/View/Components/GuestLayout.php', app_path('View/Components/GuestLayout.php'));
+
+        // Layouts...
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/layouts', resource_path('views/layouts'));
+
+        // Single Blade Views...
+        copy(__DIR__.'/../../stubs/resources/views/dashboard.blade.php', resource_path('views/dashboard.blade.php'));
+        copy(__DIR__.'/../../stubs/resources/views/terms.blade.php', resource_path('views/terms.blade.php'));
+        copy(__DIR__.'/../../stubs/resources/views/policy.blade.php', resource_path('views/policy.blade.php'));
+
+        // Other Views...
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/accounts', resource_path('views/accounts'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/auth', resource_path('views/auth'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/components', resource_path('views/components'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/layouts', resource_path('views/layouts'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/profile', resource_path('views/profile'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/password', resource_path('views/password'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/user', resource_path('views/user'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/user-picture', resource_path('views/user-picture'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/api-tokens', resource_path('views/api-tokens'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/two-factor-authentication', resource_path('views/two-factor-authentication'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/confirmed-two-factor-authentication', resource_path('views/confirmed-two-factor-authentication'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/recovery-codes', resource_path('views/recovery-codes'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/device-sessions', resource_path('views/device-sessions'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/deleted-device-sessions', resource_path('views/deleted-device-sessions'));
+
+        // Routes...
+        $this->replaceInFile('auth:api', 'auth:sanctum', base_path('routes/api.php'));
+
+        if (! Str::contains(file_get_contents(base_path('routes/web.php')), "'/dashboard'")) {
+            File::append(base_path('routes/web.php'), $this->dashboardRouteDefinition());
+        }
+
+        // Assets...
+        File::ensureDirectoryExists(resource_path('js/controllers'));
+        File::ensureDirectoryExists(resource_path('js/elements'));
+        File::ensureDirectoryExists(resource_path('js/helpers'));
+        File::ensureDirectoryExists(resource_path('js/libs'));
+
+        copy(__DIR__.'/../../stubs/resources/css/app.css', resource_path('css/app.css'));
+        copy(__DIR__.'/../../stubs/resources/js/app.js', resource_path('js/app.js'));
+        copy(__DIR__.'/../../stubs/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
+
+        File::copyDirectory(__DIR__.'/../../stubs/resources/js/controllers', resource_path('js/controllers'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/js/elements', resource_path('js/elements'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/js/helpers', resource_path('js/helpers'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/js/libs', resource_path('js/libs'));
+
+        // Tests...
+        $stubs = $this->getTestStubsPath();
+
+        copy($stubs.'/Feature/ApiTokenPermissionsTest.php', base_path('tests/Feature/ApiTokenPermissionsTest.php'));
+        copy($stubs.'/Feature/BrowserSessionsTest.php', base_path('tests/Feature/BrowserSessionsTest.php'));
+        copy($stubs.'/Feature/CreateApiTokenTest.php', base_path('tests/Feature/CreateApiTokenTest.php'));
+        copy($stubs.'/Feature/DeleteAccountTest.php', base_path('tests/Feature/DeleteAccountTest.php'));
+        copy($stubs.'/Feature/DeleteApiTokenTest.php', base_path('tests/Feature/DeleteApiTokenTest.php'));
+        copy($stubs.'/Feature/ProfileInformationTest.php', base_path('tests/Feature/ProfileInformationTest.php'));
+        copy($stubs.'/Feature/TwoFactorAuthenticationSettingsTest.php', base_path('tests/Feature/TwoFactorAuthenticationSettingsTest.php'));
+        copy($stubs.'/Feature/UpdatePasswordTest.php', base_path('tests/Feature/UpdatePasswordTest.php'));
+
+        // Teams...
+        if ($this->option('teams')) {
+            $this->installHotstreamTeamsStack();
+        }
+
+        $this->line('');
+        $this->components->info('Hotstream scaffolding installed successfully.');
+
+        return true;
+    }
+
+    private function dashboardRouteDefinition(): string
+    {
+        return trim(<<<'PHP'
+        Route::middleware([
+            'auth:sanctum',
+            'verified',
+        ])->group(function () {
+            Route::get('/dashboard', function () {
+                return view('dashboard');
+            })->name('dashboard');
+        });
+        PHP);
+    }
+
+    private function installHotstreamTeamsStack(): void
+    {
+        // Directories...
+        File::ensureDirectoryExists(resource_path('views/teams'));
+        File::ensureDirectoryExists(resource_path('views/team-invitations'));
+        File::ensureDirectoryExists(resource_path('views/team-user-role'));
+        File::ensureDirectoryExists(resource_path('views/team-users'));
+
+        // Other Views...
+        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/teams', resource_path('views/teams'));
+        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/team-invitations', resource_path('views/team-invitations'));
+        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/team-user-role', resource_path('views/team-user-role'));
+        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/team-users', resource_path('views/team-users'));
+
+        // Tests...
+        $stubs = $this->getTestStubsPath();
+
+        copy($stubs.'/Feature/CreateTeamTest.php', base_path('tests/Feature/CreateTeamTest.php'));
+        copy($stubs.'/Feature/DeleteTeamTest.php', base_path('tests/Feature/DeleteTeamTest.php'));
+        copy($stubs.'/Feature/InviteTeamMemberTest.php', base_path('tests/Feature/InviteTeamMemberTest.php'));
+        copy($stubs.'/Feature/LeaveTeamTest.php', base_path('tests/Feature/LeaveTeamTest.php'));
+        copy($stubs.'/Feature/RemoveTeamMemberTest.php', base_path('tests/Feature/RemoveTeamMemberTest.php'));
+        copy($stubs.'/Feature/UpdateTeamMemberRoleTest.php', base_path('tests/Feature/UpdateTeamMemberRoleTest.php'));
+        copy($stubs.'/Feature/UpdateTeamNameTest.php', base_path('tests/Feature/UpdateTeamNameTest.php'));
+
+        $this->ensureApplicationIsTeamCompatible();
+    }
+
+    private function ensureApplicationIsTeamCompatible(): void
+    {
+        // Publish Team Migrations...
+        $this->callSilent('vendor:publish', ['--tag' => 'hostream-team-migrations', '--force' => true]);
+
+        // Configuration...
+        $this->replaceInFile('// Features::teams([\'invitations\' => true])', 'Features::teams([\'invitations\' => true])', config_path('hotstream.php'));
+
+        // Directories...
+        File::ensureDirectoryExists(app_path('Actions/Hotstream'));
+        File::ensureDirectoryExists(app_path('Events'));
+        File::ensureDirectoryExists(app_path('Policies'));
+
+        // Service Providers...
+        copy(__DIR__.'/../../stubs/app/Providers/JetstreamWithTeamsServiceProvider.php', app_path('Providers/JetstreamServiceProvider.php'));
+
+        // Models...
+        copy(__DIR__.'/../../stubs/app/Models/Membership.php', app_path('Models/Membership.php'));
+        copy(__DIR__.'/../../stubs/app/Models/Team.php', app_path('Models/Team.php'));
+        copy(__DIR__.'/../../stubs/app/Models/TeamInvitation.php', app_path('Models/TeamInvitation.php'));
+        copy(__DIR__.'/../../stubs/app/Models/UserWithTeams.php', app_path('Models/User.php'));
+
+        // Actions...
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/AddTeamMember.php', app_path('Actions/Hotstream/AddTeamMember.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/CreateTeam.php', app_path('Actions/Hotstream/CreateTeam.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/DeleteTeam.php', app_path('Actions/Hotstream/DeleteTeam.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/DeleteUserWithTeams.php', app_path('Actions/Hotstream/DeleteUser.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/InviteTeamMember.php', app_path('Actions/Hotstream/InviteTeamMember.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/RemoveTeamMember.php', app_path('Actions/Hotstream/RemoveTeamMember.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/UpdateTeamName.php', app_path('Actions/Hotstream/UpdateTeamName.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/UpdateUserPicture.php', app_path('Actions/Hotstream/UpdateUserPicture.php'));
+
+        copy(__DIR__.'/../../stubs/app/Actions/Fortify/CreateNewUserWithTeams.php', app_path('Actions/Fortify/CreateNewUser.php'));
+
+        // Policies...
+        File::copyDirectory(__DIR__.'/../../stubs/app/Policies', app_path('Policies'));
+
+        // Factories...
+        copy(__DIR__.'/../../database/factories/UserFactory.php', base_path('database/factories/UserFactory.php'));
+        copy(__DIR__.'/../../database/factories/TeamFactory.php', base_path('database/factories/TeamFactory.php'));
+        copy(__DIR__.'/../../database/factories/TeamInvitationFactory.php', base_path('database/factories/TeamInvitationFactory.php'));
+    }
+}

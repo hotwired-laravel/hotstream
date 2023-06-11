@@ -2,9 +2,11 @@
 
 namespace Hotwired\Hotstream\Tests;
 
+use Hotwired\Hotstream\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Hotwired\Hotstream\HotstreamServiceProvider;
+use Laravel\Fortify\FortifyServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -21,16 +23,33 @@ class TestCase extends Orchestra
     {
         return [
             HotstreamServiceProvider::class,
+            FortifyServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function defineEnvironment($app)
     {
-        config()->set('database.default', 'testing');
+        $app['config']->set('database.default', 'testbench');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_hotstream_table.php.stub';
-        $migration->up();
-        */
+        $app['config']->set('database.connections.testbench', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
+    }
+
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../vendor/laravel/fortify/database/migrations');
+    }
+
+    protected function defineHasTeamEnvironment($app)
+    {
+        $features = $app->config->get('hotstream.features', []);
+
+        $features[] = Features::teams(['invitations' => true]);
+
+        $app->config->set('hotstream.features', $features);
     }
 }
