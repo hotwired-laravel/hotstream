@@ -37,35 +37,35 @@ class Hotstream
     public static $defaultPermissions = [];
 
     /**
-     * The user model that should be used by Jetstream.
+     * The user model that should be used by Hotstream.
      *
      * @var string
      */
     public static $userModel = 'App\\Models\\User';
 
     /**
-     * The team model that should be used by Jetstream.
+     * The team model that should be used by Hotstream.
      *
      * @var string
      */
     public static $teamModel = 'App\\Models\\Team';
 
     /**
-     * The membership model that should be used by Jetstream.
+     * The membership model that should be used by Hotstream.
      *
      * @var string
      */
     public static $membershipModel = 'App\\Models\\Membership';
 
     /**
-     * The team invitation model that should be used by Jetstream.
+     * The team invitation model that should be used by Hotstream.
      *
      * @var string
      */
     public static $teamInvitationModel = 'App\\Models\\TeamInvitation';
 
     /**
-     * Determine if Jetstream has registered roles.
+     * Determine if Hotstream has registered roles.
      *
      * @return bool
      */
@@ -78,7 +78,7 @@ class Hotstream
      * Find the role with the given key.
      *
      * @param  string  $key
-     * @return \Laravel\Jetstream\Role
+     * @return \Laravel\Hotstream\Role
      */
     public static function findRole(string $key)
     {
@@ -91,7 +91,7 @@ class Hotstream
      * @param  string  $key
      * @param  string  $name
      * @param  array  $permissions
-     * @return \Laravel\Jetstream\Role
+     * @return \Laravel\Hotstream\Role
      */
     public static function role(string $key, string $name, array $permissions)
     {
@@ -107,7 +107,7 @@ class Hotstream
     }
 
     /**
-     * Determine if any permissions have been registered with Jetstream.
+     * Determine if any permissions have been registered with Hotstream.
      *
      * @return bool
      */
@@ -269,7 +269,7 @@ class Hotstream
     }
 
     /**
-     * Determine if Jetstream is managing profile photos.
+     * Determine if Hotstream is managing profile photos.
      *
      * @return bool
      */
@@ -279,13 +279,23 @@ class Hotstream
     }
 
     /**
-     * Determine if Jetstream is supporting API features.
+     * Determine if Hotstream is supporting API features.
      *
      * @return bool
      */
     public static function hasApiFeatures()
     {
         return Features::hasApiFeatures();
+    }
+
+    /**
+     * Determine if Hotstream is supporting Team features.
+     *
+     * @return bool
+     */
+    public static function hasTeamFeatures()
+    {
+        return Features::hasTeamFeatures();
     }
 
     /**

@@ -1,11 +1,14 @@
-<x-app-layout :title="__('Teams & Settings')">
+<x-app-layout :title="Hotwired\Hotstream\Hotstream::hasTeamFeatures() ? __('Teams & Settings') : __('Profile & Settings')">
     <x-container :padding-on-native="false">
         <x-turbo-frame id="navigation-menu" target="_top">
             <x-page-heading>
-                {{ __('Teams & Settings') }}
+                {{ Hotwired\Hotstream\Hotstream::hasTeamFeatures()
+                    ? __('Teams & Settings')
+                    : __('Profile & Settings') }}
             </x-page-heading>
 
             <x-menu>
+                @if (Hotwired\Hotstream\Hotstream::hasTeamFeatures())
                 <x-menu.section>
                     @foreach ($teams as $team)
                         <x-menu.link :href="route('teams.show', $team)">
@@ -23,6 +26,7 @@
                         {{ __('Create Another Team') }}</span>
                     </x-menu.link>
                 </x-menu.section>
+                @endif
 
                 <x-menu.section>
                     <x-menu.link :href="route('user.edit')" icon="user" data-turbo-frame="_top">

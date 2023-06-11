@@ -52,15 +52,33 @@ Route::group(['middleware' => config('hotstream.middleware', ['web'])], function
         Route::put('/user/password', [PasswordController::class, 'update'])->name('user.password.update');
 
         Route::group(['middleware' => 'verified'], function () {
-            // Manage Teams...
-            Route::get('/teams/create', [TeamsController::class, 'create'])->name('teams.create');
-            Route::post('/teams', [TeamsController::class, 'store'])->name('teams.store');
-            Route::get('/teams/{team}', [TeamsController::class, 'show'])->name('teams.show');
-            Route::get('/teams/{team}/edit', [TeamsController::class, 'edit'])->name('teams.edit');
-            Route::put('/teams/{team}', [TeamsController::class, 'update'])->name('teams.update');
-            Route::get('/teams/{team}/delete', [TeamsController::class, 'delete'])->name('teams.delete');
-            Route::delete('/teams/{team}', [TeamsController::class, 'destroy'])->name('teams.destroy');
-            Route::put('/teams/{team}/current', [CurrentTeamsController::class, 'update'])->name('teams.current');
+            if (Hotstream::hasTeamsFeatures()) {
+                // Manage Teams...
+                Route::get('/teams/create', [TeamsController::class, 'create'])->name('teams.create');
+                Route::post('/teams', [TeamsController::class, 'store'])->name('teams.store');
+                Route::get('/teams/{team}', [TeamsController::class, 'show'])->name('teams.show');
+                Route::get('/teams/{team}/edit', [TeamsController::class, 'edit'])->name('teams.edit');
+                Route::put('/teams/{team}', [TeamsController::class, 'update'])->name('teams.update');
+                Route::get('/teams/{team}/delete', [TeamsController::class, 'delete'])->name('teams.delete');
+                Route::delete('/teams/{team}', [TeamsController::class, 'destroy'])->name('teams.destroy');
+                Route::put('/teams/{team}/current', [CurrentTeamsController::class, 'update'])->name('teams.current');
+
+                // Team Members...
+                Route::get('/teams/{team}/users', [TeamUsersController::class, 'index'])->name('team-users.index');
+                Route::delete('/teams/{team}/users/{user}', [TeamUsersController::class, 'destroy'])->name('teams.team-users.destroy');
+                Route::get('/teams/{team}/team-users/{user}/role/edit', [TeamUserRoleController::class, 'edit'])->name('teams.team-users.role.edit');
+                Route::put('/teams/{team}/team-users/{user}/role', [TeamUserRoleController::class, 'update'])->name('teams.team-users.role.update');
+
+                // Pending Invitations...
+                Route::get('/teams/{team}/invitations', [TeamInvitationsController::class, 'index'])->name('team-invitations.index');
+                Route::get('/teams/{team}/invitations/create', [TeamInvitationsController::class, 'create'])->name('team-invitations.create');
+                Route::post('/teams/{team}/invitations', [TeamInvitationsController::class, 'store'])->name('team-invitations.store');
+                Route::delete('/team-invitations/{invitation}', [TeamInvitationsController::class, 'destroy'])->name('team-invitations.destroy');
+
+                // Accepting Invitation...
+                Route::get('/team-invitations/{invitation}/accept', [AcceptedTeamInvitationsController::class, 'update'])->middleware('signed')->name('team-invitations.accept');
+
+            }
 
             // Two Factor Authentication...
             Route::get('/two-factor-authentication', [TwoFactorAuthenticationController::class, 'index'])->middleware('password.confirm')->name('two-factor-authentication.index');
@@ -71,28 +89,13 @@ Route::group(['middleware' => config('hotstream.middleware', ['web'])], function
             Route::get('/recovery-codes', [RecoveryCodesController::class, 'index'])->middleware('password.confirm')->name('recovery-codes.index');
             Route::post('/recovery-codes', [RecoveryCodesController::class, 'store'])->middleware('password.confirm')->name('recovery-codes.store');
 
-            // Team Members...
-            Route::get('/teams/{team}/users', [TeamUsersController::class, 'index'])->name('team-users.index');
-            Route::delete('/teams/{team}/users/{user}', [TeamUsersController::class, 'destroy'])->name('teams.team-users.destroy');
-            Route::get('/teams/{team}/team-users/{user}/role/edit', [TeamUserRoleController::class, 'edit'])->name('teams.team-users.role.edit');
-            Route::put('/teams/{team}/team-users/{user}/role', [TeamUserRoleController::class, 'update'])->name('teams.team-users.role.update');
-
-            // Pending Invitations...
-            Route::get('/teams/{team}/invitations', [TeamInvitationsController::class, 'index'])->name('team-invitations.index');
-            Route::get('/teams/{team}/invitations/create', [TeamInvitationsController::class, 'create'])->name('team-invitations.create');
-            Route::post('/teams/{team}/invitations', [TeamInvitationsController::class, 'store'])->name('team-invitations.store');
-            Route::delete('/team-invitations/{invitation}', [TeamInvitationsController::class, 'destroy'])->name('team-invitations.destroy');
-
-            // Accepting Invitation...
-            Route::get('/team-invitations/{invitation}/accept', [AcceptedTeamInvitationsController::class, 'update'])->middleware('signed')->name('team-invitations.accept');
-
             // Devices & Sessions...
             Route::get('/device-sessions', [DeviceSessionsController::class, 'index'])->name('device-sessions.index');
             Route::get('/deleted-device-sessions', [DeletedDeviceSessionsController::class, 'edit'])->name('deleted-device-sessions.edit');
             Route::put('/deleted-device-sessions', [DeletedDeviceSessionsController::class, 'update'])->name('deleted-device-sessions.update');
 
             // API Tokens...
-            if (Hotstream::hasApiFeatures()) {
+            if (Hotstream::hasTeamFeatures()) {
                 Route::get('/user/api-tokens', [UserApiTokensController::class, 'index'])->name('api-tokens.index');
                 Route::get('/user/api-tokens/create', [UserApiTokensController::class, 'create'])->name('api-tokens.create');
                 Route::post('/user/api-tokens', [UserApiTokensController::class, 'store'])->name('api-tokens.store');

@@ -69,7 +69,7 @@
                 "Hotwired\\Hotstream\\HotstreamServiceProvider"
             ],
             "aliases": {
-                "Hotstream": "Hotwired\\Hotstream\\Facades\\Hotstream"
+                "Hotstream": "Hotwired\\Hotstream\\Hotstream"
             }
         }
     },
