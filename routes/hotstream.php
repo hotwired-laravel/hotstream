@@ -52,7 +52,7 @@ Route::group(['middleware' => config('hotstream.middleware', ['web'])], function
         Route::put('/user/password', [PasswordController::class, 'update'])->name('user.password.update');
 
         Route::group(['middleware' => 'verified'], function () {
-            if (Hotstream::hasTeamsFeatures()) {
+            if (Hotstream::hasTeamFeatures()) {
                 // Manage Teams...
                 Route::get('/teams/create', [TeamsController::class, 'create'])->name('teams.create');
                 Route::post('/teams', [TeamsController::class, 'store'])->name('teams.store');
@@ -77,7 +77,6 @@ Route::group(['middleware' => config('hotstream.middleware', ['web'])], function
 
                 // Accepting Invitation...
                 Route::get('/team-invitations/{invitation}/accept', [AcceptedTeamInvitationsController::class, 'update'])->middleware('signed')->name('team-invitations.accept');
-
             }
 
             // Two Factor Authentication...
@@ -95,7 +94,7 @@ Route::group(['middleware' => config('hotstream.middleware', ['web'])], function
             Route::put('/deleted-device-sessions', [DeletedDeviceSessionsController::class, 'update'])->name('deleted-device-sessions.update');
 
             // API Tokens...
-            if (Hotstream::hasTeamFeatures()) {
+            if (Hotstream::hasApiFeatures()) {
                 Route::get('/user/api-tokens', [UserApiTokensController::class, 'index'])->name('api-tokens.index');
                 Route::get('/user/api-tokens/create', [UserApiTokensController::class, 'create'])->name('api-tokens.create');
                 Route::post('/user/api-tokens', [UserApiTokensController::class, 'store'])->name('api-tokens.store');
