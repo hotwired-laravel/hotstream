@@ -2,24 +2,55 @@
 
 namespace Hotwired\Hotstream;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hotwired\Hotstream\Commands\HotstreamCommand;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Fortify;
 
-class HotstreamServiceProvider extends PackageServiceProvider
+class HotstreamServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    /**
+     * Register any application services.
+     */
+    public function register(): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('hotstream')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_hotstream_table')
-            ->hasCommand(HotstreamCommand::class);
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        $this->bootFortifyHandlers();
+    }
+
+    private function bootFortifyHandlers(): void
+    {
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('auth.forgot-password');
+        });
+
+        Fortify::resetPasswordView(function () {
+            return view('auth.reset-password');
+        });
+
+        Fortify::registerView(function () {
+            return view('auth.register');
+        });
+
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify-email');
+        });
+
+        Fortify::twoFactorChallengeView(function () {
+            return view('auth.two-factor-challenge');
+        });
+
+        Fortify::confirmPasswordView(function () {
+            return view('auth.confirm-password');
+        });
     }
 }
