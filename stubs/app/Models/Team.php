@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Hotwired\Hotstream\Events\TeamCreated;
 use Hotwired\Hotstream\Events\TeamDeleted;
 use Hotwired\Hotstream\Events\TeamUpdated;
 use Hotwired\Hotstream\Models\Team as HotstreamTeam;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Team extends HotstreamTeam
 {

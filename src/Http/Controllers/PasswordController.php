@@ -5,7 +5,6 @@ namespace Hotwired\Hotstream\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
-use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 
 class PasswordController extends Controller
 {

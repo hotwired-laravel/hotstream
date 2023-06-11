@@ -3,10 +3,10 @@
 namespace Hotwired\Hotstream\Tests;
 
 use Hotwired\Hotstream\Features;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Hotwired\Hotstream\HotstreamServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Laravel\Fortify\FortifyServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -32,9 +32,9 @@ class TestCase extends Orchestra
         $app['config']->set('database.default', 'testbench');
 
         $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
     }
 

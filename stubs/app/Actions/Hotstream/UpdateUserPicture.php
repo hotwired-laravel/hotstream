@@ -2,8 +2,8 @@
 
 namespace App\Actions\Hotstream;
 
-use Hotwired\Hotstream\Contracts\UpdatesUserPictures;
 use App\Models\User;
+use Hotwired\Hotstream\Contracts\UpdatesUserPictures;
 use Illuminate\Support\Facades\Validator;
 
 class UpdateUserPicture implements UpdatesUserPictures

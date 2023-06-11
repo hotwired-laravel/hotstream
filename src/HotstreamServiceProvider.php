@@ -13,7 +13,7 @@ class HotstreamServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/hotstream.php', 'hotstream');
+        $this->mergeConfigFrom(__DIR__.'/../config/hotstream.php', 'hotstream');
     }
 
     /**
@@ -36,7 +36,7 @@ class HotstreamServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/../stubs/config/hotstream.php' => config_path('hotstream.php'),
+            __DIR__.'/../stubs/config/hotstream.php' => config_path('hotstream.php'),
         ], 'hotstream-config');
 
         $this->publishes([
@@ -105,7 +105,7 @@ class HotstreamServiceProvider extends ServiceProvider
         }
 
         $this->commands([
-            Commands\InstallCommand::class
+            Commands\InstallCommand::class,
         ]);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Actions\Hotstream;
 
-use Hotwired\Hotstream\Contracts\DeletesTeams;
 use App\Models\Team;
+use Hotwired\Hotstream\Contracts\DeletesTeams;
 
 class DeleteTeam implements DeletesTeams
 {

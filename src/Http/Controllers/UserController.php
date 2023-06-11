@@ -2,8 +2,8 @@
 
 namespace Hotwired\Hotstream\Http\Controllers;
 
-use Hotwired\Hotstream\Contracts\DeletesUsers;
 use App\Http\Controllers\Controller;
+use Hotwired\Hotstream\Contracts\DeletesUsers;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

@@ -10,7 +10,7 @@ test('team member roles can be updated', function () {
     );
 
     $this->put(route('teams.team-users.role.update', [$user->currentTeam, $otherUser]), [
-        'role' => 'editor'
+        'role' => 'editor',
     ]);
 
     expect($otherUser->fresh()->hasTeamRole(

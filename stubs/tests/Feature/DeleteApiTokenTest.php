@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Support\Str;
 use Hotwired\Hotstream\Features;
+use Illuminate\Support\Str;
 
 test('api tokens can be deleted', function () {
     if (Features::hasTeamFeatures()) {

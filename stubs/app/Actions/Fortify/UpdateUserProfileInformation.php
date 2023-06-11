@@ -2,8 +2,8 @@
 
 namespace App\Actions\Fortify;
 
-use Hotwired\Hotstream\Contracts\UpdatesUserPictures;
 use App\Models\User;
+use Hotwired\Hotstream\Contracts\UpdatesUserPictures;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;

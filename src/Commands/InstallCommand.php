@@ -112,7 +112,7 @@ class InstallCommand extends Command
         );
 
         // Importmaps...
-        copy(__DIR__ . '/../../stubs/routes/importmap.php', base_path('routes/'));
+        copy(__DIR__.'/../../stubs/routes/importmap.php', base_path('routes/'));
 
         // Tailwind...
         if (File::exists(resource_path('sass'))) {

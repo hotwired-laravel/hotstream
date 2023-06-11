@@ -4,7 +4,6 @@ namespace Hotwired\Hotstream\Http\Controllers;
 
 use Hotwired\Hotstream\Hotstream;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class UserApiTokensController
 {

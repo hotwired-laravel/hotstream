@@ -4,9 +4,9 @@ namespace App\Actions\Hotstream;
 
 use App\Models\Team;
 use App\Models\User;
+use Hotwired\Hotstream\Contracts\UpdatesTeamNames;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
-use Hotwired\Hotstream\Contracts\UpdatesTeamNames;
 
 class UpdateTeamName implements UpdatesTeamNames
 {

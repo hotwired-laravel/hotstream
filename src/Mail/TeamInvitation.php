@@ -2,11 +2,11 @@
 
 namespace Hotwired\Hotstream\Mail;
 
+use Hotwired\Hotstream\Models\TeamInvitation as TeamInvitationModel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
-use Hotwired\Hotstream\Models\TeamInvitation as TeamInvitationModel;
 
 class TeamInvitation extends Mailable
 {

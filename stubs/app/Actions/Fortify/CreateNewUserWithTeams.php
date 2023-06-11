@@ -2,9 +2,9 @@
 
 namespace App\Actions\Fortify;
 
-use Hotwired\Hotstream\Hotstream;
 use App\Models\Team;
 use App\Models\User;
+use Hotwired\Hotstream\Hotstream;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

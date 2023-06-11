@@ -2,14 +2,14 @@
 
 namespace App\Actions\Hotstream;
 
+use App\Models\Team;
+use App\Models\User;
+use Closure;
 use Hotwired\Hotstream\Contracts\InvitesTeamMembers;
 use Hotwired\Hotstream\Events\InvitingTeamMember;
 use Hotwired\Hotstream\Hotstream;
 use Hotwired\Hotstream\Mail\TeamInvitation;
 use Hotwired\Hotstream\Rules\Role;
-use App\Models\Team;
-use App\Models\User;
-use Closure;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;

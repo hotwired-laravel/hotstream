@@ -33,9 +33,9 @@ abstract class Team extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(Hotstream::userModel(), Hotstream::membershipModel())
-                        ->withPivot('role')
-                        ->withTimestamps()
-                        ->as('membership');
+            ->withPivot('role')
+            ->withTimestamps()
+            ->as('membership');
     }
 
     /**
@@ -98,10 +98,10 @@ abstract class Team extends Model
     public function purge(): void
     {
         $this->owner()->where('current_team_id', $this->id)
-                ->update(['current_team_id' => null]);
+            ->update(['current_team_id' => null]);
 
         $this->users()->where('current_team_id', $this->id)
-                ->update(['current_team_id' => null]);
+            ->update(['current_team_id' => null]);
 
         $this->users()->detach();
 

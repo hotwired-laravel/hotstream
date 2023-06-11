@@ -2,10 +2,10 @@
 
 namespace App\Actions\Hotstream;
 
-use Hotwired\Hotstream\Contracts\DeletesTeams;
-use Hotwired\Hotstream\Contracts\DeletesUsers;
 use App\Models\Team;
 use App\Models\User;
+use Hotwired\Hotstream\Contracts\DeletesTeams;
+use Hotwired\Hotstream\Contracts\DeletesUsers;
 use Illuminate\Support\Facades\DB;
 
 class DeleteUser implements DeletesUsers

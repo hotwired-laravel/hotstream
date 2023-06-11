@@ -2,10 +2,10 @@
 
 namespace App\Actions\Hotstream;
 
-use Hotwired\Hotstream\Contracts\RemovesTeamMembers;
-use Hotwired\Hotstream\Events\TeamMemberRemoved;
 use App\Models\Team;
 use App\Models\User;
+use Hotwired\Hotstream\Contracts\RemovesTeamMembers;
+use Hotwired\Hotstream\Events\TeamMemberRemoved;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
