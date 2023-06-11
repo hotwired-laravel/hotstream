@@ -93,8 +93,8 @@ Route::group(['middleware' => config('hotstream.middleware', ['web'])], function
             Route::get('/deleted-device-sessions', [DeletedDeviceSessionsController::class, 'edit'])->name('deleted-device-sessions.edit');
             Route::put('/deleted-device-sessions', [DeletedDeviceSessionsController::class, 'update'])->name('deleted-device-sessions.update');
 
-            // API Tokens...
             if (Hotstream::hasApiFeatures()) {
+                // API Tokens...
                 Route::get('/user/api-tokens', [UserApiTokensController::class, 'index'])->name('api-tokens.index');
                 Route::get('/user/api-tokens/create', [UserApiTokensController::class, 'create'])->name('api-tokens.create');
                 Route::post('/user/api-tokens', [UserApiTokensController::class, 'store'])->name('api-tokens.store');
