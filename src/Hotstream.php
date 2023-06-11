@@ -14,6 +14,12 @@ use Hotwired\Hotstream\Contracts\UpdatesUserPictures;
 
 class Hotstream
 {
+    /**
+     * Indicates if Hotstream routes will be registered.
+     *
+     * @var bool
+     */
+    public static $registersRoutes = true;
 
     /**
      * The roles that are available to assign to users.
@@ -384,5 +390,17 @@ class Hotstream
     public static function updateUserPictureUsing(string $class)
     {
         return app()->singleton(UpdatesUserPictures::class, $class);
+    }
+
+    /**
+     * Configure Hotstream to not register its routes.
+     *
+     * @return static
+     */
+    public static function ignoreRoutes(): self
+    {
+        static::$registersRoutes = false;
+
+        return new static;
     }
 }

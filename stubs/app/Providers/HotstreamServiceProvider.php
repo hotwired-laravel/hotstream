@@ -3,10 +3,11 @@
 namespace App\Providers;
 
 use App\Actions\Hotstream\DeleteUser;
-use Hotwired\Hotstream\Facades\Hotstream;
+use Hotwired\Hotstream\Hotstream;
 use Illuminate\Support\ServiceProvider;
+use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
-class JetstreamServiceProvider extends ServiceProvider
+class HotstreamServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -22,14 +23,12 @@ class JetstreamServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configurePermissions();
+        $this->configureTurboMacros();
 
         Hotstream::deleteUsersUsing(DeleteUser::class);
     }
 
-    /**
-     * Configure the permissions that are available within the application.
-     */
-    protected function configurePermissions(): void
+    private function configurePermissions(): void
     {
         Hotstream::defaultApiTokenPermissions(['read']);
 
@@ -39,5 +38,14 @@ class JetstreamServiceProvider extends ServiceProvider
             'update',
             'delete',
         ]);
+    }
+
+    private function configureTurboMacros(): void
+    {
+        PendingTurboStreamResponse::macro('flash', function (string $message) {
+            return turbo_stream()->append('notifications', view('layouts._notification', [
+                'message' => $message,
+            ]));
+        });
     }
 }
