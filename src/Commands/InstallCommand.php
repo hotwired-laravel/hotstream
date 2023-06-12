@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Str;
+use Symfony\Component\Process\PhpExecutableFinder;
 
 class InstallCommand extends Command
 {
@@ -14,6 +15,7 @@ class InstallCommand extends Command
         {--teams : Indicates if team support should be installed}
         {--api : Indicates if API support should be installed}
         {--verification : Indicates if email verification support should be installed}
+        {--composer=global : Absolute path to the Composer binary which should be used to install packages}
     ';
 
     protected $description = 'Install the Hotstream application starter kit';
@@ -31,10 +33,7 @@ class InstallCommand extends Command
         // "Home" Route...
         $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
 
-        if (file_exists(resource_path('views/welcome.blade.php'))) {
-            $this->replaceInFile('/home', '/dashboard', resource_path('views/welcome.blade.php'));
-            $this->replaceInFile('Home', 'Dashboard', resource_path('views/welcome.blade.php'));
-        }
+        copy(__DIR__.'/../../stubs/resources/views/welcome.blade.php', resource_path('views/welcome.blade.php'));
 
         // Fortify Provider...
         $this->installServiceProviderAfter('RouteServiceProvider', 'FortifyServiceProvider');
@@ -44,7 +43,7 @@ class InstallCommand extends Command
 
         // Configure API...
         if ($this->option('api')) {
-            $this->replaceInFile('// Features::api(),', 'Features::api(),', config_path('jetstream.php'));
+            $this->replaceInFile('// Features::api(),', 'Features::api(),', config_path('hotstream.php'));
         }
 
         // Configure Email Verification...
@@ -68,8 +67,8 @@ class InstallCommand extends Command
         }
 
         copy($stubs.'/Pest.php', base_path('tests/Pest.php'));
-        copy($stubs.'/ExampleTest.php', base_path('tests/Feature/ExampleTest.php'));
         copy($stubs.'/Unit/ExampleTest.php', base_path('tests/Unit/ExampleTest.php'));
+        copy($stubs.'/Feature/ExampleTest.php', base_path('tests/Feature/ExampleTest.php'));
         copy($stubs.'/Feature/AuthenticationTest.php', base_path('tests/Feature/AuthenticationTest.php'));
         copy($stubs.'/Feature/EmailVerificationTest.php', base_path('tests/Feature/EmailVerificationTest.php'));
         copy($stubs.'/Feature/PasswordConfirmationTest.php', base_path('tests/Feature/PasswordConfirmationTest.php'));
@@ -95,24 +94,30 @@ class InstallCommand extends Command
     private function installHotstreamStack(): bool
     {
         // Install Composer packages...
-        if (
-            ! $this->requireComposerPackages('hotwired/stimulus-laravel:^0.2') ||
-            ! $this->requireComposerPackages('hotwired/turbo-laravel:^1.12') ||
-            ! $this->requireComposerPackages('tonysm/importmap-laravel:^1.4') ||
-            ! $this->requireComposerPackages('tonysm/tailwindcss-laravel:^0.10')
-        ) {
+        if (! $this->requireComposerPackages([
+            'hotwired/stimulus-laravel:^0.2',
+            'hotwired/turbo-laravel:^1.12',
+            'tonysm/importmap-laravel:^1.4',
+            'tonysm/tailwindcss-laravel:^0.10',
+        ])) {
             return false;
         }
 
         // Sanctum...
         $this->output->write(
             Process::forever()
-                ->run([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'], base_path())
+                ->path(base_path())
+                ->run([$this->phpBinary(), 'artisan', 'vendor:publish', '--provider=Laravel\Sanctum\SanctumServiceProvider', '--force'])
                 ->output()
         );
 
+        // Remove the Vite config...
+        if (File::exists(base_path('vite.config.js'))) {
+            File::delete(base_path('vite.config.js'));
+        }
+
         // Importmaps...
-        copy(__DIR__.'/../../stubs/routes/importmap.php', base_path('routes/'));
+        copy(__DIR__.'/../../stubs/routes/importmap.php', base_path('routes/importmap.php'));
 
         // Tailwind...
         if (File::exists(resource_path('sass'))) {
@@ -161,7 +166,7 @@ class InstallCommand extends Command
         // Actions...
         copy(__DIR__.'/../../stubs/app/Actions/Fortify/CreateNewUser.php', app_path('Actions/Fortify/CreateNewUser.php'));
         copy(__DIR__.'/../../stubs/app/Actions/Fortify/UpdateUserProfileInformation.php', app_path('Actions/Fortify/UpdateUserProfileInformation.php'));
-        copy(__DIR__.'/../../stubs/app/Actions/Jetstream/DeleteUser.php', app_path('Actions/Jetstream/DeleteUser.php'));
+        copy(__DIR__.'/../../stubs/app/Actions/Hotstream/DeleteUser.php', app_path('Actions/Hotstream/DeleteUser.php'));
 
         // Components...
         File::copyDirectory(__DIR__.'/../../stubs/resources/views/components', resource_path('views/components'));
@@ -295,7 +300,7 @@ class InstallCommand extends Command
         File::ensureDirectoryExists(app_path('Policies'));
 
         // Service Providers...
-        copy(__DIR__.'/../../stubs/app/Providers/JetstreamWithTeamsServiceProvider.php', app_path('Providers/JetstreamServiceProvider.php'));
+        copy(__DIR__.'/../../stubs/app/Providers/HotstreamWithTeamsServiceProvider.php', app_path('Providers/HotstreamerviceProvider.php'));
 
         // Models...
         copy(__DIR__.'/../../stubs/app/Models/Membership.php', app_path('Models/Membership.php'));
@@ -319,8 +324,82 @@ class InstallCommand extends Command
         File::copyDirectory(__DIR__.'/../../stubs/app/Policies', app_path('Policies'));
 
         // Factories...
-        copy(__DIR__.'/../../database/factories/UserFactory.php', base_path('database/factories/UserFactory.php'));
         copy(__DIR__.'/../../database/factories/TeamFactory.php', base_path('database/factories/TeamFactory.php'));
         copy(__DIR__.'/../../database/factories/TeamInvitationFactory.php', base_path('database/factories/TeamInvitationFactory.php'));
+    }
+
+    private function replaceInFile($search, $replace, $path)
+    {
+        file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+    }
+
+    private function removeComposerDevPackages($packages)
+    {
+        $composer = $this->option('composer');
+
+        if ($composer !== 'global') {
+            $command = [$this->phpBinary(), $composer, 'remove', '--dev'];
+        }
+
+        $command = array_merge(
+            $command ?? ['composer', 'remove', '--dev'],
+            is_array($packages) ? $packages : func_get_args()
+        );
+
+        $result = Process::forever()->path(base_path())->env([
+            'COMPOSER_MEMORY_LIMIT' => '-1',
+        ])->run($command);
+
+        $this->output->write($result->output());
+
+        return $result->successful();
+    }
+
+    private function requireComposerDevPackages($packages)
+    {
+        return $this->requireComposerPackages($packages, dev: true);
+    }
+
+    private function requireComposerPackages($packages, bool $dev = false)
+    {
+        $composer = $this->option('composer');
+
+        if ($composer !== 'global') {
+            $command = array_filter([$this->phpBinary(), $composer, 'require', $dev ? '--dev' : null]);
+        }
+
+        $command = array_merge(
+            $command ?? array_filter(['composer', 'require', $dev ? '--dev' : null]),
+            is_array($packages) ? $packages : func_get_args()
+        );
+
+        $result = Process::forever()->path(base_path())->env([
+            'COMPOSER_MEMORY_LIMIT' => '-1',
+        ])->run($command);
+
+        $this->output->write($result->output());
+
+        return $result->successful();
+    }
+
+    private function installServiceProviderAfter($after, $name)
+    {
+        if (! Str::contains($appConfig = file_get_contents(config_path('app.php')), 'App\\Providers\\'.$name.'::class')) {
+            file_put_contents(config_path('app.php'), str_replace(
+                'App\\Providers\\'.$after.'::class,',
+                'App\\Providers\\'.$after.'::class,'.PHP_EOL.'        App\\Providers\\'.$name.'::class,',
+                $appConfig
+            ));
+        }
+    }
+
+    private function phpBinary()
+    {
+        return (new PhpExecutableFinder())->find(false) ?: 'php';
+    }
+
+    private function getTestStubsPath(): string
+    {
+        return __DIR__.'/../../stubs/tests';
     }
 }
