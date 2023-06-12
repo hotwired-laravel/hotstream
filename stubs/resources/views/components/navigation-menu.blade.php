@@ -25,7 +25,7 @@
                         <x-slot name="trigger">
                             @if (Hotwired\Hotstream\Hotstream::managesProfilePhotos())
                                 <a data-turbo-frame="navigation-menu" href="{{ route('accounts.index') }}" class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                    @include('user._current_user_nav_photo', ['id' => 'current-user-nav-photo', 'user' => Auth::user()])
+                                    @include('profile._current_user_nav_photo', ['id' => 'current-user-nav-photo', 'user' => Auth::user()])
                                 </a>
                             @else
                                 <span class="inline-flex rounded-md">
@@ -68,7 +68,7 @@
 
                 @if (Hotwired\Hotstream\Hotstream::managesProfilePhotos())
                     <a href="{{ route('accounts.index') }}" class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                        @include('user._current_user_nav_photo', ['id' => 'current-user-nav-photo', 'user' => Auth::user()])
+                        @include('profile._current_user_nav_photo', ['id' => 'current-user-nav-photo', 'user' => Auth::user()])
                     </a>
                 @else
                     <span class="inline-flex rounded-md">

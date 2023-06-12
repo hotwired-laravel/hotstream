@@ -3,14 +3,11 @@
 namespace Hotwired\Hotstream\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class AccountsController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('accounts.index', [
-            'teams' => $request->user()->allTeams(),
-        ]);
+        return view('accounts.index');
     }
 }

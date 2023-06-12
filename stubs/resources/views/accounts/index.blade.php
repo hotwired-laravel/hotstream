@@ -6,8 +6,9 @@
             </x-page-heading>
 
             <x-menu>
+                @if (Hotwired\Hotstream\Hotstream::hasTeamFeatures())
                 <x-menu.section>
-                    @foreach ($teams as $team)
+                    @foreach (auth()->user()->allTeams() as $team)
                         <x-menu.link :href="route('teams.show', $team)">
                             <span class="flex items-center space-x-2">
                                 <span>{{ $team->name }}</span>
@@ -23,6 +24,7 @@
                         {{ __('Create Another Team') }}</span>
                     </x-menu.link>
                 </x-menu.section>
+                @endif
 
                 <x-menu.section>
                     <x-menu.link :href="route('profile.edit')" icon="user" data-turbo-frame="_top">
