@@ -138,7 +138,6 @@ class InstallCommand extends Command
         File::ensureDirectoryExists(resource_path('views/auth'));
         File::ensureDirectoryExists(resource_path('views/components'));
         File::ensureDirectoryExists(resource_path('views/layouts'));
-        File::ensureDirectoryExists(resource_path('views/profile'));
         File::ensureDirectoryExists(resource_path('views/password'));
         File::ensureDirectoryExists(resource_path('views/user'));
         File::ensureDirectoryExists(resource_path('views/user-picture'));
