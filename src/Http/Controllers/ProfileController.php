@@ -11,14 +11,14 @@ use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
     use RedirectsActions;
     use InteractsWithTurboNativeNavigation;
 
     public function edit(Request $request)
     {
-        return view('user.edit', [
+        return view('profile.edit', [
             'user' => $request->user(),
         ]);
     }
@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function delete()
     {
-        return view('user.delete');
+        return view('profile.delete');
     }
 
     public function destroy(Request $request, DeletesUsers $deleter, StatefulGuard $auth)

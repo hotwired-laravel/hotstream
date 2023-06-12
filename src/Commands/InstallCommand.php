@@ -116,6 +116,10 @@ class InstallCommand extends Command
             File::delete(base_path('vite.config.js'));
         }
 
+        Process::forever()
+            ->path(base_path())
+            ->run([$this->phpBinary(), 'artisan', 'importmap:install']);
+
         // Importmaps...
         copy(__DIR__.'/../../stubs/routes/importmap.php', base_path('routes/importmap.php'));
 
@@ -139,8 +143,8 @@ class InstallCommand extends Command
         File::ensureDirectoryExists(resource_path('views/components'));
         File::ensureDirectoryExists(resource_path('views/layouts'));
         File::ensureDirectoryExists(resource_path('views/password'));
-        File::ensureDirectoryExists(resource_path('views/user'));
-        File::ensureDirectoryExists(resource_path('views/user-picture'));
+        File::ensureDirectoryExists(resource_path('views/profile'));
+        File::ensureDirectoryExists(resource_path('views/profile-picture'));
         File::ensureDirectoryExists(resource_path('views/api-tokens'));
         File::ensureDirectoryExists(resource_path('views/two-factor-authentication'));
         File::ensureDirectoryExists(resource_path('views/confirmed-two-factor-authentication'));
@@ -189,8 +193,8 @@ class InstallCommand extends Command
         File::copyDirectory(__DIR__.'/../../stubs/resources/views/layouts', resource_path('views/layouts'));
         File::copyDirectory(__DIR__.'/../../stubs/resources/views/profile', resource_path('views/profile'));
         File::copyDirectory(__DIR__.'/../../stubs/resources/views/password', resource_path('views/password'));
-        File::copyDirectory(__DIR__.'/../../stubs/resources/views/user', resource_path('views/user'));
-        File::copyDirectory(__DIR__.'/../../stubs/resources/views/user-picture', resource_path('views/user-picture'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/profile', resource_path('views/profile'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/profile-picture', resource_path('views/profile-picture'));
         File::copyDirectory(__DIR__.'/../../stubs/resources/views/api-tokens', resource_path('views/api-tokens'));
         File::copyDirectory(__DIR__.'/../../stubs/resources/views/two-factor-authentication', resource_path('views/two-factor-authentication'));
         File::copyDirectory(__DIR__.'/../../stubs/resources/views/confirmed-two-factor-authentication', resource_path('views/confirmed-two-factor-authentication'));
@@ -237,6 +241,13 @@ class InstallCommand extends Command
             $this->installHotstreamTeamsStack();
         }
 
+        // Stimulus...
+        Process::forever()
+            ->path(base_path())
+            ->run([$this->phpBinary(), 'artisan', 'stimulus:publish']);
+
+        $this->components->info('Publshed Stimulus loading');
+
         $this->line('');
         $this->components->info('Hotstream scaffolding installed successfully.');
 
@@ -259,17 +270,11 @@ class InstallCommand extends Command
 
     private function installHotstreamTeamsStack(): void
     {
-        // Directories...
-        File::ensureDirectoryExists(resource_path('views/teams'));
-        File::ensureDirectoryExists(resource_path('views/team-invitations'));
-        File::ensureDirectoryExists(resource_path('views/team-user-role'));
-        File::ensureDirectoryExists(resource_path('views/team-users'));
-
         // Other Views...
-        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/teams', resource_path('views/teams'));
-        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/team-invitations', resource_path('views/team-invitations'));
-        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/team-user-role', resource_path('views/team-user-role'));
-        File::copyDirectory(__DIR__.'/../../stubs/livewire/resources/views/team-users', resource_path('views/team-users'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/teams', resource_path('views/teams'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/team-invitations', resource_path('views/team-invitations'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/team-user-role', resource_path('views/team-user-role'));
+        File::copyDirectory(__DIR__.'/../../stubs/resources/views/team-users', resource_path('views/team-users'));
 
         // Tests...
         $stubs = $this->getTestStubsPath();

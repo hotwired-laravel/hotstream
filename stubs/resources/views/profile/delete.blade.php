@@ -11,11 +11,11 @@
                 {{ __('Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
             </p>
 
-            <form method="POST" action="{{ route('user.destroy') }}">
+            <form method="POST" action="{{ route('profile.destroy') }}">
                 @csrf
 
                 <div>
-                    <x-input type="password" class="mt-1 block w-full"
+                    <x-input type="password" class="block w-full mt-1"
                                 name="password"
                                 autofocus
                                 autocomplete="current-password"

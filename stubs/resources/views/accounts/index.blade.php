@@ -1,14 +1,11 @@
-<x-app-layout :title="Hotwired\Hotstream\Hotstream::hasTeamFeatures() ? __('Teams & Settings') : __('Profile & Settings')">
+<x-app-layout :title="__('Teams & Settings')">
     <x-container :padding-on-native="false">
         <x-turbo-frame id="navigation-menu" target="_top">
             <x-page-heading>
-                {{ Hotwired\Hotstream\Hotstream::hasTeamFeatures()
-                    ? __('Teams & Settings')
-                    : __('Profile & Settings') }}
+                {{ __('Teams & Settings') }}
             </x-page-heading>
 
             <x-menu>
-                @if (Hotwired\Hotstream\Hotstream::hasTeamFeatures())
                 <x-menu.section>
                     @foreach ($teams as $team)
                         <x-menu.link :href="route('teams.show', $team)">
@@ -26,14 +23,13 @@
                         {{ __('Create Another Team') }}</span>
                     </x-menu.link>
                 </x-menu.section>
-                @endif
 
                 <x-menu.section>
-                    <x-menu.link :href="route('user.edit')" icon="user" data-turbo-frame="_top">
+                    <x-menu.link :href="route('profile.edit')" icon="user" data-turbo-frame="_top">
                         {{ __('Edit Profile') }}</span>
                     </x-menu.link>
 
-                    <x-menu.link :href="route('user.password.edit')" icon="key" data-turbo-frame="_top">
+                    <x-menu.link :href="route('profile.password.edit')" icon="key" data-turbo-frame="_top">
                         {{ __('Change Password') }}</span>
                     </x-menu.link>
 
@@ -51,7 +47,7 @@
                         {{ __('Devices & Sessions') }}</span>
                     </x-menu.link>
 
-                    <x-menu.link :href="route('user.delete')" icon="trash" data-turbo-frame="_top">
+                    <x-menu.link :href="route('profile.delete')" icon="trash" data-turbo-frame="_top">
                         {{ __('Delete Account') }}</span>
                     </x-menu.link>
                 </x-menu.section>

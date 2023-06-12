@@ -18,8 +18,8 @@ use Hotwired\Hotstream\Http\Controllers\TeamUsersController;
 use Hotwired\Hotstream\Http\Controllers\TermsOfServiceController;
 use Hotwired\Hotstream\Http\Controllers\TwoFactorAuthenticationController;
 use Hotwired\Hotstream\Http\Controllers\UserApiTokensController;
-use Hotwired\Hotstream\Http\Controllers\UserController;
-use Hotwired\Hotstream\Http\Controllers\UserPictureController;
+use Hotwired\Hotstream\Http\Controllers\ProfileController;
+use Hotwired\Hotstream\Http\Controllers\ProfilePictureController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => config('hotstream.middleware', ['web'])], function () {
@@ -41,15 +41,15 @@ Route::group(['middleware' => config('hotstream.middleware', ['web'])], function
         Route::get('/accounts', [AccountsController::class, 'index'])->name('accounts.index');
 
         // User Profile, Picture, Password...
-        Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
-        Route::put('/user', [UserController::class, 'update'])->name('user.update');
-        Route::get('/user/delete', [UserController::class, 'delete'])->name('user.delete');
-        Route::post('/user/delete', [UserController::class, 'destroy'])->name('user.destroy');
-        Route::get('/user/picture/edit', [UserPictureController::class, 'edit'])->name('user.picture.edit');
-        Route::put('/user/picture', [UserPictureController::class, 'update'])->name('user.picture.update');
-        Route::delete('/user/picture', [UserPictureController::class, 'destroy'])->name('user.picture.destroy');
-        Route::get('/user/password/edit', [PasswordController::class, 'edit'])->name('user.password.edit');
-        Route::put('/user/password', [PasswordController::class, 'update'])->name('user.password.update');
+        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/profile/delete', [ProfileController::class, 'delete'])->name('profile.delete');
+        Route::post('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile/picture/edit', [ProfilePictureController::class, 'edit'])->name('profile.picture.edit');
+        Route::put('/profile/picture', [ProfilePictureController::class, 'update'])->name('profile.picture.update');
+        Route::delete('/profile/picture', [ProfilePictureController::class, 'destroy'])->name('profile.picture.destroy');
+        Route::get('/profile/password/edit', [PasswordController::class, 'edit'])->name('profile.password.edit');
+        Route::put('/profile/password', [PasswordController::class, 'update'])->name('profile.password.update');
 
         Route::group(['middleware' => 'verified'], function () {
             if (Hotstream::hasTeamFeatures()) {

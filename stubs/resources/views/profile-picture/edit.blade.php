@@ -8,7 +8,7 @@
 
         <x-form-card>
             <x-turbo-frame id="user-profile" target="_top" class="contents">
-                @include('user-picture._form', ['user' => $user])
+                @include('profile-picture._form', ['user' => $user])
             </x-turbo-frame>
         </x-form-card>
     </x-container>
