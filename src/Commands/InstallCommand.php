@@ -289,7 +289,7 @@ class InstallCommand extends Command
     private function ensureApplicationIsTeamCompatible(): void
     {
         // Publish Team Migrations...
-        $this->callSilent('vendor:publish', ['--tag' => 'hostream-team-migrations', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'hotstream-team-migrations', '--force' => true]);
 
         // Configuration...
         $this->replaceInFile('// Features::teams([\'invitations\' => true])', 'Features::teams([\'invitations\' => true])', config_path('hotstream.php'));

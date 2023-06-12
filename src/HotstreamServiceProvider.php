@@ -41,7 +41,7 @@ class HotstreamServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../database/migrations/2014_10_12_000000_create_users_table.php' => database_path('migrations/2014_10_12_000000_create_users_table.php'),
-        ], 'hostream-migrations');
+        ], 'hotstream-migrations');
 
         $this->publishes([
             __DIR__.'/../database/migrations/2020_05_21_100000_create_teams_table.php' => database_path('migrations/2020_05_21_100000_create_teams_table.php'),
