@@ -10,6 +10,8 @@ use Hotwired\Hotstream\Http\Controllers\DeviceSessionsController;
 use Hotwired\Hotstream\Http\Controllers\EnabledTwoFactorAuthenticationController;
 use Hotwired\Hotstream\Http\Controllers\PasswordController;
 use Hotwired\Hotstream\Http\Controllers\PrivacyPolicyController;
+use Hotwired\Hotstream\Http\Controllers\ProfileController;
+use Hotwired\Hotstream\Http\Controllers\ProfilePictureController;
 use Hotwired\Hotstream\Http\Controllers\RecoveryCodesController;
 use Hotwired\Hotstream\Http\Controllers\TeamInvitationsController;
 use Hotwired\Hotstream\Http\Controllers\TeamsController;
@@ -18,8 +20,6 @@ use Hotwired\Hotstream\Http\Controllers\TeamUsersController;
 use Hotwired\Hotstream\Http\Controllers\TermsOfServiceController;
 use Hotwired\Hotstream\Http\Controllers\TwoFactorAuthenticationController;
 use Hotwired\Hotstream\Http\Controllers\UserApiTokensController;
-use Hotwired\Hotstream\Http\Controllers\ProfileController;
-use Hotwired\Hotstream\Http\Controllers\ProfilePictureController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => config('hotstream.middleware', ['web'])], function () {
