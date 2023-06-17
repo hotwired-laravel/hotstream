@@ -9,7 +9,7 @@ class EnabledTwoFactorAuthenticationController
 {
     public function store(Request $request, EnableTwoFactorAuthentication $enabler)
     {
-        if (auth()->user()->hasEnabledTwoFactorAuthentication()) {
+        if ($request->user()->hasEnabledTwoFactorAuthentication()) {
             return redirect()->route('two-factor-authentication.index');
         }
 
