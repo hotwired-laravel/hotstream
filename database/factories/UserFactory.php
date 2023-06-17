@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use Hotwired\Hotstream\Features;
 use App\Models\Team;
 use App\Models\User;
+use Hotwired\Hotstream\Features;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

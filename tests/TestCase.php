@@ -4,7 +4,6 @@ namespace Hotwired\Hotstream\Tests;
 
 use Hotwired\Hotstream\Features;
 use Hotwired\Hotstream\HotstreamServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Laravel\Fortify\FortifyServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 

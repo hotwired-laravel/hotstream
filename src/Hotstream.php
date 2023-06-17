@@ -93,7 +93,6 @@ class Hotstream
     /**
      * Specify the user model that should be used by Hotstream.
      *
-     * @param  string  $model
      * @return static
      */
     public static function useUserModel(string $model)
