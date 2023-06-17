@@ -76,6 +76,16 @@ class InstallCommand extends Command
         copy($stubs.'/Feature/RegistrationTest.php', base_path('tests/Feature/RegistrationTest.php'));
 
         $this->components->info('Hotstream installed!');
+
+        $this->components->info('To finish your installation, you need to:');
+
+        $this->components->bulletList([
+            'Run "php artisan storage:link" (run inside the Sail container if using it)',
+            'Run "php artisan tailwindcss:download" to download the Tailwind CLI"',
+            'Finally, run "php artisan tailwindcss:build" to build your assets for the first time',
+        ]);
+
+        $this->components->info('After that you should be done!');
     }
 
     private function configureSession(): void

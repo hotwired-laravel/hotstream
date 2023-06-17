@@ -21,7 +21,7 @@ You can install the package via composer:
 composer require hotwired/hotstream
 ```
 
-You can install and run the migrations with:
+You can install Hotstream by running:
 
 ```bash
 php artisan hostream:install
@@ -33,11 +33,26 @@ Alternatively, you can opt-in to include Teams:
 php artisan hostream:install --teams
 ```
 
-Next, migrate:
+Then, migrate:
 
 ```bash
 php artisan migrate
 ```
+
+Since we're using [Importmap Laravel](https://github.com/tonysm/importmap-laravel), you'll need to create the symlink to map the JS folder to your `public/` folder by running (remember to run that inside Sail if you're using that):
+
+```bash
+php artisan storage:link
+```
+
+Next, to finish the [TailwindCSS Laravel](https://github.com/tonysm/tailwindcss-laravel) installation, you'll need to download the Tailwind CLI and compile your assets at least once:
+
+```bash
+php artisan tailwindcss:download
+php artisan tailwindcss:build
+```
+
+Done!
 
 ## Documentation
 
