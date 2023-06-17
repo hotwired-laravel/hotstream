@@ -15,14 +15,14 @@ class TeamInvitation extends Mailable
     /**
      * The team invitation instance.
      *
-     * @var \Laravel\Jetstream\TeamInvitation
+     * @var \Hotwired\Hotstream\TeamInvitation
      */
     public $invitation;
 
     /**
      * Create a new message instance.
      *
-     * @param  \Laravel\Jetstream\TeamInvitation  $invitation
+     * @param  \Hotwired\Hotstream\TeamInvitation  $invitation
      * @return void
      */
     public function __construct(TeamInvitationModel $invitation)

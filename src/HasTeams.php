@@ -132,7 +132,7 @@ trait HasTeams
      * Get the role that the user has on the team.
      *
      * @param  mixed  $team
-     * @return \Laravel\Jetstream\Role|null
+     * @return \Hotwired\Hotstream\Role|null
      */
     public function teamRole($team)
     {
