@@ -193,6 +193,19 @@ class Hotstream
     }
 
     /**
+     * Determine if a given user model utilizes the "HasTeams" trait.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model
+     * @return bool
+     */
+    public static function userHasTeamFeatures($user)
+    {
+        return (array_key_exists(HasTeams::class, class_uses_recursive($user)) ||
+                method_exists($user, 'currentTeam')) &&
+                static::hasTeamFeatures();
+    }
+
+    /**
      * Get the name of the user model used by the application.
      *
      * @return string
