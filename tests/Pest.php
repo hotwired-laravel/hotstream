@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Artisan;
 
 uses(TestCase::class)->in(__DIR__);
 
-function createTeam(array $overrides = []): Team
+function createTeam(array $team = [], array $user = []): Team
 {
     $action = new CreateTeam;
 
     $user = User::forceCreate(array_replace([
         'name' => 'Tony Messias',
-        'email' => 'tonysm@example.com',
+        'email' => fake()->unique()->email(),
         'password' => 'password',
-    ], $overrides));
+    ], $user));
 
-    return $action->create($user, ['name' => 'Test Team']);
+    return $action->create($user, array_replace(['name' => 'Test Team'], $team));
 }
 
 function migrate(): void
