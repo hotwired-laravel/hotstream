@@ -16,7 +16,7 @@
     backupStaticProperties="false"
 >
     <testsuites>
-        <testsuite name="Hotwired\\Hotstream Test Suite">
+        <testsuite name="Hotstream Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

@@ -2,11 +2,10 @@
 
 namespace Hotwired\Hotstream\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 
-class PasswordController extends Controller
+class PasswordController
 {
     use RedirectsActions;
 

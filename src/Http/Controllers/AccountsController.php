@@ -2,9 +2,7 @@
 
 namespace Hotwired\Hotstream\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-
-class AccountsController extends Controller
+class AccountsController
 {
     public function index()
     {

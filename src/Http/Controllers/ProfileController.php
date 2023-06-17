@@ -2,7 +2,6 @@
 
 namespace Hotwired\Hotstream\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Hotwired\Hotstream\Contracts\DeletesUsers;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
@@ -11,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 
-class ProfileController extends Controller
+class ProfileController
 {
     use RedirectsActions;
     use InteractsWithTurboNativeNavigation;

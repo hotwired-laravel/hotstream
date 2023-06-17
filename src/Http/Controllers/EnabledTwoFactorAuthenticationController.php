@@ -3,10 +3,9 @@
 namespace Hotwired\Hotstream\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Laravel\Fortify\Actions\EnableTwoFactorAuthentication;
 
-class EnabledTwoFactorAuthenticationController extends Controller
+class EnabledTwoFactorAuthenticationController
 {
     public function store(Request $request, EnableTwoFactorAuthentication $enabler)
     {

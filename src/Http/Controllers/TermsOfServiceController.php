@@ -3,11 +3,10 @@
 namespace Hotwired\Hotstream\Http\Controllers;
 
 use Hotwired\Hotstream\Hotstream;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
-class TermsOfServiceController extends Controller
+class TermsOfServiceController
 {
     public function show(): View
     {

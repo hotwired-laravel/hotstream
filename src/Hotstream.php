@@ -91,6 +91,19 @@ class Hotstream
     }
 
     /**
+     * Specify the user model that should be used by Hotstream.
+     *
+     * @param  string  $model
+     * @return static
+     */
+    public static function useUserModel(string $model)
+    {
+        static::$userModel = $model;
+
+        return new static;
+    }
+
+    /**
      * Define a role.
      *
      * @return \Laravel\Hotstream\Role

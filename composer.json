@@ -23,7 +23,9 @@
         "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
+        "hotwired/turbo-laravel": "^1.12",
         "laravel/pint": "^1.0",
+        "laravel/sanctum": "^3.2",
         "nunomaduro/collision": "^7.9",
         "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^8.0",
@@ -42,7 +44,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Hotwired\\Hotstream\\Tests\\": "tests/"
+            "Hotwired\\Hotstream\\Tests\\": "tests/",
+            "App\\": "stubs/app/",
+            "Database\\Factories\\": "database/factories/"
         }
     },
     "scripts": {

@@ -5,10 +5,9 @@ namespace Hotwired\Hotstream\Http\Controllers;
 use Hotwired\Hotstream\Contracts\RemovesTeamMembers;
 use Hotwired\Hotstream\Hotstream;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Gate;
 
-class TeamUsersController extends Controller
+class TeamUsersController
 {
     public function index($teamId)
     {

@@ -4,9 +4,8 @@ namespace Hotwired\Hotstream\Http\Controllers;
 
 use Hotwired\Hotstream\Hotstream;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class CurrentTeamsController extends Controller
+class CurrentTeamsController
 {
     public function update(Request $request, $team)
     {

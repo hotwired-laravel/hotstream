@@ -2,7 +2,6 @@
 
 namespace Hotwired\Hotstream\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Hotwired\Hotstream\Actions\ValidateTeamDeletion;
 use Hotwired\Hotstream\Contracts\CreatesTeams;
 use Hotwired\Hotstream\Contracts\DeletesTeams;
@@ -12,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 
-class TeamsController extends Controller
+class TeamsController
 {
     use RedirectsActions;
     use InteractsWithTurboNativeNavigation;

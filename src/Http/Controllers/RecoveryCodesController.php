@@ -3,10 +3,9 @@
 namespace Hotwired\Hotstream\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Laravel\Fortify\Actions\GenerateNewRecoveryCodes;
 
-class RecoveryCodesController extends Controller
+class RecoveryCodesController
 {
     public function index()
     {
