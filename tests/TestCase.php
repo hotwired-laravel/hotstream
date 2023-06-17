@@ -31,6 +31,10 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
+
+        if ($this->hasTeamsFeature ?? false) {
+            $this->defineHasTeamEnvironment($app);
+        }
     }
 
     protected function defineDatabaseMigrations()
