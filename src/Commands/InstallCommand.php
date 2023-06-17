@@ -74,6 +74,8 @@ class InstallCommand extends Command
         copy($stubs.'/Feature/PasswordConfirmationTest.php', base_path('tests/Feature/PasswordConfirmationTest.php'));
         copy($stubs.'/Feature/PasswordResetTest.php', base_path('tests/Feature/PasswordResetTest.php'));
         copy($stubs.'/Feature/RegistrationTest.php', base_path('tests/Feature/RegistrationTest.php'));
+
+        $this->components->info('Hotstream installed!');
     }
 
     private function configureSession(): void
@@ -116,11 +118,12 @@ class InstallCommand extends Command
             File::delete(base_path('vite.config.js'));
         }
 
+        // Importmaps...
         Process::forever()
             ->path(base_path())
             ->run([$this->phpBinary(), 'artisan', 'importmap:install']);
 
-        // Importmaps...
+        // Copy our stub importmap routes file...
         copy(__DIR__.'/../../stubs/routes/importmap.php', base_path('routes/importmap.php'));
 
         // Tailwind...
