@@ -34,7 +34,9 @@
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0"
+        "phpstan/phpstan-phpunit": "^1.0",
+        "tonysm/importmap-laravel": "^1.4",
+        "tonysm/tailwindcss-laravel": "^0.10.1"
     },
     "autoload": {
         "psr-4": {
