@@ -1,11 +1,11 @@
 <?php
 
 use App\Actions\Hotstream\CreateTeam;
-use Illuminate\Support\Facades\Gate;
 use Hotwired\Hotstream\Hotstream;
 use Hotwired\Hotstream\Models\Team;
 use Hotwired\Hotstream\Tests\Fixtures\TeamPolicy;
 use Hotwired\Hotstream\Tests\Fixtures\User;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Sanctum\Sanctum;
 use Laravel\Sanctum\TransientToken;
 

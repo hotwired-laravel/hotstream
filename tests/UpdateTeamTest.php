@@ -1,14 +1,13 @@
 <?php
 
-use App\Actions\Hotstream\CreateTeam;
 use App\Actions\Hotstream\UpdateTeamName;
 use App\Models\Team;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\ValidationException;
 use Hotwired\Hotstream\Hotstream;
 use Hotwired\Hotstream\Tests\Fixtures\TeamPolicy;
 use Hotwired\Hotstream\Tests\Fixtures\User;
 use Hotwired\Hotstream\Tests\Fixtures\WithTeamsFeature;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\ValidationException;
 
 uses(WithTeamsFeature::class);
 

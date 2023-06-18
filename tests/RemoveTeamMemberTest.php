@@ -2,16 +2,16 @@
 
 use App\Actions\Hotstream\RemoveTeamMember;
 use App\Models\Team;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\ValidationException;
 use Hotwired\Hotstream\Events\RemovingTeamMember;
 use Hotwired\Hotstream\Events\TeamMemberRemoved;
 use Hotwired\Hotstream\Hotstream;
 use Hotwired\Hotstream\Tests\Fixtures\TeamPolicy;
 use Hotwired\Hotstream\Tests\Fixtures\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\ValidationException;
 
 beforeEach(function () {
     Gate::policy(Team::class, TeamPolicy::class);

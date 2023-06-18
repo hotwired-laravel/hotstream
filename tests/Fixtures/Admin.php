@@ -2,8 +2,8 @@
 
 namespace Hotwired\Hotstream\Tests\Fixtures;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Hotwired\Hotstream\HasProfilePhoto;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable

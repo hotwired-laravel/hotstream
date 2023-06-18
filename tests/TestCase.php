@@ -36,7 +36,7 @@ class TestCase extends Orchestra
 
     public function defineEnvironment($app)
     {
-        View::addLocation(__DIR__ . '/../stubs/resources/views');
+        View::addLocation(__DIR__.'/../stubs/resources/views');
 
         $app['config']->set('database.default', 'testbench');
 

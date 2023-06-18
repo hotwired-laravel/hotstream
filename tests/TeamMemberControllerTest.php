@@ -1,13 +1,12 @@
 <?php
 
 use App\Models\Team;
-use Illuminate\Support\Facades\Gate;
 use Hotwired\Hotstream\Hotstream;
 use Hotwired\Hotstream\Tests\Fixtures\TeamPolicy;
 use Hotwired\Hotstream\Tests\Fixtures\User;
 use Hotwired\Hotstream\Tests\Fixtures\WithTeamsFeature;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Sanctum\TransientToken;
-
 use function Pest\Laravel\actingAs;
 
 uses(WithTeamsFeature::class);

@@ -2,12 +2,12 @@
 
 use App\Actions\Hotstream\InviteTeamMember;
 use App\Models\Team;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\ValidationException;
 use Hotwired\Hotstream\Hotstream;
 use Hotwired\Hotstream\Tests\Fixtures\TeamPolicy;
 use Hotwired\Hotstream\Tests\Fixtures\User;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
 
 beforeEach(function () {
     Gate::policy(Team::class, TeamPolicy::class);
