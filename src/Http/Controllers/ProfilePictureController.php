@@ -26,8 +26,8 @@ class ProfilePictureController
         if ($request->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream()->update('user-profile', view('profile-picture._form', ['user' => $user])),
-                turbo_stream()->replace('current-user-nav-photo', view('user._current_user_nav_photo', ['user' => $user])),
-                turbo_stream()->replace('current-user-nav-photo-mobile', view('user._current_user_nav_photo', ['id' => 'current-user-nav-photo-mobile', 'class' => 'w-10 h-10', 'user' => $user])),
+                turbo_stream()->replace('current-user-nav-photo', view('profile._current_user_nav_photo', ['user' => $user])),
+                turbo_stream()->replace('current-user-nav-photo-mobile', view('profile._current_user_nav_photo', ['id' => 'current-user-nav-photo-mobile', 'class' => 'w-10 h-10', 'user' => $user])),
                 turbo_stream()->flash(__('Profile photo updated.')),
             ]);
         }
@@ -44,7 +44,7 @@ class ProfilePictureController
         if ($request->wantsTurboStream()) {
             return turbo_stream([
                 turbo_stream()->update('user-profile', view('profile-picture._form', ['user' => $request->user()])),
-                turbo_stream()->replace('current-user-nav-photo', view('user._current_user_nav_photo', ['user' => $request->user()])),
+                turbo_stream()->replace('current-user-nav-photo', view('profile._current_user_nav_photo', ['user' => $request->user()])),
                 turbo_stream()->flash(__('Profile photo removed.')),
             ]);
         }
