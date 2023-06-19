@@ -9,6 +9,8 @@
     </a>
 </p>
 
+**Attention: This project is under development and is not production-ready yet.**
+
 Hotstream is an application Starter Kit for Laravel. It's heavily inspired by [Laravel Jetstream](https://github.com/laravel/jetstream), but modified to better work as a [Hotwired](https://hotwired.dev/) application.
 
 It comes with [Turbo.js](https://turbo.hotwired.dev/), [Stimulus](https://stimulus.hotwired.dev/), [Importmap Laravel](https://github.com/tonysm/importmap-laravel), and [TailwindCSS Laravel](https://github.com/tonysm/tailwindcss-laravel). And features a Node-less frontend setup.
