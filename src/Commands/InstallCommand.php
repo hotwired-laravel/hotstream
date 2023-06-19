@@ -317,7 +317,7 @@ class InstallCommand extends Command
         File::ensureDirectoryExists(app_path('Policies'));
 
         // Service Providers...
-        copy(__DIR__.'/../../stubs/app/Providers/HotstreamWithTeamsServiceProvider.php', app_path('Providers/HotstreamerviceProvider.php'));
+        copy(__DIR__.'/../../stubs/app/Providers/HotstreamWithTeamsServiceProvider.php', app_path('Providers/HotstreamServiceProvider.php'));
 
         // Models...
         copy(__DIR__.'/../../stubs/app/Models/Membership.php', app_path('Models/Membership.php'));
