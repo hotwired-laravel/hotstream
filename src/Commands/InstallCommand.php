@@ -342,7 +342,6 @@ class InstallCommand extends Command
 
         // Factories...
         copy(__DIR__.'/../../database/factories/TeamFactory.php', base_path('database/factories/TeamFactory.php'));
-        copy(__DIR__.'/../../database/factories/TeamInvitationFactory.php', base_path('database/factories/TeamInvitationFactory.php'));
     }
 
     private function replaceInFile($search, $replace, $path)
