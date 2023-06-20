@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream;
+namespace HotwiringLaravel\Hotstream;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -58,7 +58,7 @@ class HotstreamServiceProvider extends ServiceProvider
     {
         if (Hotstream::$registersRoutes) {
             Route::group([
-                'namespace' => 'Hotwired\Hotstream\Http\Controllers',
+                'namespace' => 'HotwiringLaravel\Hotstream\Http\Controllers',
                 'domain' => config('hotstream.domain', null),
                 'prefix' => config('hotstream.prefix', config('hotstream.path')),
             ], function () {

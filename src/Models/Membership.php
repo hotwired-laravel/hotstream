@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream\Models;
+namespace HotwiringLaravel\Hotstream\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Hotwired\Hotstream\Http\Controllers;
+namespace HotwiringLaravel\Hotstream\Http\Controllers;
 
-use Hotwired\Hotstream\Contracts\DeletesUsers;
+use HotwiringLaravel\Hotstream\Contracts\DeletesUsers;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

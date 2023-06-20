@@ -2,8 +2,8 @@
 
 use App\Actions\Hotstream\CreateTeam;
 use App\Models\Team;
-use Hotwired\Hotstream\Tests\Fixtures\User;
-use Hotwired\Hotstream\Tests\TestCase;
+use HotwiringLaravel\Hotstream\Tests\Fixtures\User;
+use HotwiringLaravel\Hotstream\Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
 
 uses(TestCase::class)->in(__DIR__);

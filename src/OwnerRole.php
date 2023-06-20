@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream;
+namespace HotwiringLaravel\Hotstream;
 
 class OwnerRole extends Role
 {

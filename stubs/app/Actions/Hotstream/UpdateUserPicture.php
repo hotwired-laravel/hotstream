@@ -3,7 +3,7 @@
 namespace App\Actions\Hotstream;
 
 use App\Models\User;
-use Hotwired\Hotstream\Contracts\UpdatesUserPictures;
+use HotwiringLaravel\Hotstream\Contracts\UpdatesUserPictures;
 use Illuminate\Support\Facades\Validator;
 
 class UpdateUserPicture implements UpdatesUserPictures

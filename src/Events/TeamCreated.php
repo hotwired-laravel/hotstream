@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream\Events;
+namespace HotwiringLaravel\Hotstream\Events;
 
 class TeamCreated extends TeamEvent
 {

@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use Hotwired\Hotstream\Features;
+use HotwiringLaravel\Hotstream\Features;
 
 test('confirm password screen can be rendered', function () {
     $user = Features::hasTeamFeatures()

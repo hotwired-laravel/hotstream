@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use Hotwired\Hotstream\Features;
+use HotwiringLaravel\Hotstream\Features;
 
 test('user accounts can be deleted', function () {
     $this->actingAs($user = User::factory()->create())

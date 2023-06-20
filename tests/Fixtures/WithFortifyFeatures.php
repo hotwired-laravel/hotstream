@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream\Tests\Fixtures;
+namespace HotwiringLaravel\Hotstream\Tests\Fixtures;
 
 trait WithFortifyFeatures
 {

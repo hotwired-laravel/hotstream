@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use Hotwired\Hotstream\Features;
+use HotwiringLaravel\Hotstream\Features;
 use Illuminate\Support\Str;
 
 test('api token permissions can be updated', function () {

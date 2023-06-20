@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream\Actions;
+namespace HotwiringLaravel\Hotstream\Actions;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Support\Facades\Auth;

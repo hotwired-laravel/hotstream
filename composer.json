@@ -1,12 +1,12 @@
 {
-    "name": "hotwired/hotstream",
+    "name": "hotwiring-laravel/hotstream",
     "description": "Hotwired application starter kit for the Laravel framework.",
     "keywords": [
         "hotwired",
         "laravel",
         "hotstream"
     ],
-    "homepage": "https://github.com/hotwired-laravel/hotstream",
+    "homepage": "https://github.com/hotwiring-laravel/hotstream",
     "license": "MIT",
     "authors": [
         {
@@ -40,13 +40,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Hotwired\\Hotstream\\": "src/",
-            "Hotwired\\Hotstream\\Database\\Factories\\": "database/factories/"
+            "HotwiringLaravel\\Hotstream\\": "src/",
+            "HotwiringLaravel\\Hotstream\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Hotwired\\Hotstream\\Tests\\": "tests/",
+            "HotwiringLaravel\\Hotstream\\Tests\\": "tests/",
             "App\\": "stubs/app/",
             "Database\\Factories\\": "database/factories/"
         }
@@ -68,10 +68,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hotwired\\Hotstream\\HotstreamServiceProvider"
+                "HotwiringLaravel\\Hotstream\\HotstreamServiceProvider"
             ],
             "aliases": {
-                "Hotstream": "Hotwired\\Hotstream\\Hotstream"
+                "Hotstream": "HotwiringLaravel\\Hotstream\\Hotstream"
             }
         }
     },

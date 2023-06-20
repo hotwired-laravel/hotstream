@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Hotstream\DeleteUser;
-use Hotwired\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Hotstream;
 use Illuminate\Support\ServiceProvider;
 use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 

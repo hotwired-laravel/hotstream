@@ -1,8 +1,8 @@
 <?php
 
-namespace Hotwired\Hotstream\Models;
+namespace HotwiringLaravel\Hotstream\Models;
 
-use Hotwired\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Hotstream;
 use Illuminate\Database\Eloquent\Model;
 
 class TeamInvitation extends Model

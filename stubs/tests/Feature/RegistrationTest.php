@@ -1,7 +1,7 @@
 <?php
 
 use App\Providers\RouteServiceProvider;
-use Hotwired\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Hotstream;
 use Laravel\Fortify\Features;
 
 test('registration screen can be rendered', function () {

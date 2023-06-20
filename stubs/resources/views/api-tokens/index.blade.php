@@ -35,7 +35,7 @@
                                 </div>
                             @endif
 
-                            @if (Hotwired\Hotstream\Hotstream::hasPermissions())
+                            @if (HotwiringLaravel\Hotstream\Hotstream::hasPermissions())
                                 <a href="{{ route('api-tokens.edit', $token) }}" class="cursor-pointer ml-6 text-sm text-gray-400 underline">
                                     {{ __('Permissions') }}
                                 </a>

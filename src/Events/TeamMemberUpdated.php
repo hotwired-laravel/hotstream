@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream\Events;
+namespace HotwiringLaravel\Hotstream\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 

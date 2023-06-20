@@ -3,7 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use Hotwired\Hotstream\Contracts\UpdatesUserPictures;
+use HotwiringLaravel\Hotstream\Contracts\UpdatesUserPictures;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;

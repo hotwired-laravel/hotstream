@@ -1,9 +1,9 @@
 <?php
 
-namespace Hotwired\Hotstream\Http\Controllers;
+namespace HotwiringLaravel\Hotstream\Http\Controllers;
 
-use Hotwired\Hotstream\Contracts\AddsTeamMembers;
-use Hotwired\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Contracts\AddsTeamMembers;
+use HotwiringLaravel\Hotstream\Hotstream;
 
 class AcceptedTeamInvitationsController
 {

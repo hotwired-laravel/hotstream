@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream\Http\Controllers;
+namespace HotwiringLaravel\Hotstream\Http\Controllers;
 
 class AccountsController
 {

@@ -6,7 +6,7 @@
             </x-page-heading>
 
             <x-menu>
-                @if (Hotwired\Hotstream\Hotstream::hasTeamFeatures())
+                @if (HotwiringLaravel\Hotstream\Hotstream::hasTeamFeatures())
                 <x-menu.section>
                     @foreach (auth()->user()->allTeams() as $team)
                         <x-menu.link :href="route('teams.show', $team)">
@@ -35,7 +35,7 @@
                         {{ __('Change Password') }}</span>
                     </x-menu.link>
 
-                    @if (Hotwired\Hotstream\Hotstream::hasApiFeatures())
+                    @if (HotwiringLaravel\Hotstream\Hotstream::hasApiFeatures())
                     <x-menu.link href="{{ route('api-tokens.index') }}" icon="arrow-left-on-rectangle" data-turbo-frame="_top">
                         {{ __('API Tokens') }}
                     </x-menu.link>

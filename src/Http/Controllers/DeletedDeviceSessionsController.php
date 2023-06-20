@@ -1,8 +1,8 @@
 <?php
 
-namespace Hotwired\Hotstream\Http\Controllers;
+namespace HotwiringLaravel\Hotstream\Http\Controllers;
 
-use Hotwired\Hotstream\Actions\LogoutOtherBrowserSessions;
+use HotwiringLaravel\Hotstream\Actions\LogoutOtherBrowserSessions;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 

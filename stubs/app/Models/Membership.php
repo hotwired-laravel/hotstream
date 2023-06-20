@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Hotwired\Hotstream\Models\Membership as HotstreamMembership;
+use HotwiringLaravel\Hotstream\Models\Membership as HotstreamMembership;
 
 class Membership extends HotstreamMembership
 {

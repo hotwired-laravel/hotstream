@@ -1,10 +1,10 @@
 <?php
 
-namespace Hotwired\Hotstream\Actions;
+namespace HotwiringLaravel\Hotstream\Actions;
 
-use Hotwired\Hotstream\Events\TeamMemberUpdated;
-use Hotwired\Hotstream\Hotstream;
-use Hotwired\Hotstream\Rules\Role;
+use HotwiringLaravel\Hotstream\Events\TeamMemberUpdated;
+use HotwiringLaravel\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Rules\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 

@@ -1,6 +1,6 @@
 <?php
 
-use Hotwired\Hotstream\Features;
+use HotwiringLaravel\Hotstream\Features;
 
 return [
     'middleware' => ['web'],

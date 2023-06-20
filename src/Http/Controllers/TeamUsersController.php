@@ -1,9 +1,9 @@
 <?php
 
-namespace Hotwired\Hotstream\Http\Controllers;
+namespace HotwiringLaravel\Hotstream\Http\Controllers;
 
-use Hotwired\Hotstream\Contracts\RemovesTeamMembers;
-use Hotwired\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Contracts\RemovesTeamMembers;
+use HotwiringLaravel\Hotstream\Hotstream;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 

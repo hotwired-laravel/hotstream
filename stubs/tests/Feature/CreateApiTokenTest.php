@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\User;
-use Hotwired\Hotstream\Features;
+use HotwiringLaravel\Hotstream\Features;
 
 test('validates token', function ($input, $errors) {
     if (Features::hasTeamFeatures()) {

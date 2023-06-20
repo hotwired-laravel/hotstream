@@ -1,9 +1,9 @@
 <?php
 
-namespace Hotwired\Hotstream\Tests;
+namespace HotwiringLaravel\Hotstream\Tests;
 
-use Hotwired\Hotstream\Features;
-use Hotwired\Hotstream\HotstreamServiceProvider;
+use HotwiringLaravel\Hotstream\Features;
+use HotwiringLaravel\Hotstream\HotstreamServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Laravel\Fortify\Features as FortifyFeatures;

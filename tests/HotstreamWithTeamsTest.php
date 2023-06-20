@@ -1,7 +1,7 @@
 <?php
 
-use Hotwired\Hotstream\Hotstream;
-use Hotwired\Hotstream\Tests\Fixtures;
+use HotwiringLaravel\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Tests\Fixtures;
 
 uses(Fixtures\WithTeamsFeature::class);
 

@@ -10,13 +10,13 @@
             <div class="ml-2 text-sm text-gray-400">
                 {{ __('Owner') }}
             </div>
-        @elseif (Gate::check('updateTeamMember', $team) && Hotwired\Hotstream\Hotstream::hasRoles())
+        @elseif (Gate::check('updateTeamMember', $team) && HotwiringLaravel\Hotstream\Hotstream::hasRoles())
             <a href="{{ route('teams.team-users.role.edit', [$team, $user]) }}" class="ml-2 text-sm text-gray-400 underline">
-                {{ Hotwired\Hotstream\Hotstream::findRole($user->membership->role)->name }}
+                {{ HotwiringLaravel\Hotstream\Hotstream::findRole($user->membership->role)->name }}
             </a>
-        @elseif (Hotwired\Hotstream\Hotstream::hasRoles())
+        @elseif (HotwiringLaravel\Hotstream\Hotstream::hasRoles())
             <div class="ml-2 text-sm text-gray-400">
-                {{ Hotwired\Hotstream\Hotstream::findRole($user->membership->role)->name }}
+                {{ HotwiringLaravel\Hotstream\Hotstream::findRole($user->membership->role)->name }}
             </div>
         @endif
 

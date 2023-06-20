@@ -1,6 +1,6 @@
 <?php
 
-namespace Hotwired\Hotstream\Http\Middleware;
+namespace HotwiringLaravel\Hotstream\Http\Middleware;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Session\Middleware\AuthenticateSession as BaseAuthenticateSession;

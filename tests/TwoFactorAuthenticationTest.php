@@ -1,8 +1,8 @@
 <?php
 
-use Hotwired\Hotstream\Hotstream;
-use Hotwired\Hotstream\Tests\Fixtures\User;
-use Hotwired\Hotstream\Tests\Fixtures\WithFortifyFeatures;
+use HotwiringLaravel\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Tests\Fixtures\User;
+use HotwiringLaravel\Hotstream\Tests\Fixtures\WithFortifyFeatures;
 use Illuminate\Auth\Middleware\RequirePassword;
 use function Pest\Laravel\actingAs;
 

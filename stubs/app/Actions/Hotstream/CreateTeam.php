@@ -4,9 +4,9 @@ namespace App\Actions\Hotstream;
 
 use App\Models\Team;
 use App\Models\User;
-use Hotwired\Hotstream\Contracts\CreatesTeams;
-use Hotwired\Hotstream\Events\AddingTeam;
-use Hotwired\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Contracts\CreatesTeams;
+use HotwiringLaravel\Hotstream\Events\AddingTeam;
+use HotwiringLaravel\Hotstream\Hotstream;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 

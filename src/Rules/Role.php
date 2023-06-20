@@ -1,9 +1,9 @@
 <?php
 
-namespace Hotwired\Hotstream\Rules;
+namespace HotwiringLaravel\Hotstream\Rules;
 
 use Closure;
-use Hotwired\Hotstream\Hotstream;
+use HotwiringLaravel\Hotstream\Hotstream;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class Role implements ValidationRule

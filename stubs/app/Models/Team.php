@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Hotwired\Hotstream\Events\TeamCreated;
-use Hotwired\Hotstream\Events\TeamDeleted;
-use Hotwired\Hotstream\Events\TeamUpdated;
-use Hotwired\Hotstream\Models\Team as HotstreamTeam;
+use HotwiringLaravel\Hotstream\Events\TeamCreated;
+use HotwiringLaravel\Hotstream\Events\TeamDeleted;
+use HotwiringLaravel\Hotstream\Events\TeamUpdated;
+use HotwiringLaravel\Hotstream\Models\Team as HotstreamTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Team extends HotstreamTeam
