@@ -1,7 +1,7 @@
 <?php
 
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Tests\Fixtures;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Tests\Fixtures;
 
 test('roles can be registered', function () {
     Hotstream::$permissions = [];

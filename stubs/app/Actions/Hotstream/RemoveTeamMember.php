@@ -4,8 +4,8 @@ namespace App\Actions\Hotstream;
 
 use App\Models\Team;
 use App\Models\User;
-use HotwiringLaravel\Hotstream\Contracts\RemovesTeamMembers;
-use HotwiringLaravel\Hotstream\Events\TeamMemberRemoved;
+use HotwiredLaravel\Hotstream\Contracts\RemovesTeamMembers;
+use HotwiredLaravel\Hotstream\Events\TeamMemberRemoved;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;

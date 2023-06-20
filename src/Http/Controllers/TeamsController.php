@@ -1,12 +1,12 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Http\Controllers;
+namespace HotwiredLaravel\Hotstream\Http\Controllers;
 
-use HotwiringLaravel\Hotstream\Actions\ValidateTeamDeletion;
-use HotwiringLaravel\Hotstream\Contracts\CreatesTeams;
-use HotwiringLaravel\Hotstream\Contracts\DeletesTeams;
-use HotwiringLaravel\Hotstream\Contracts\UpdatesTeamNames;
-use HotwiringLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Actions\ValidateTeamDeletion;
+use HotwiredLaravel\Hotstream\Contracts\CreatesTeams;
+use HotwiredLaravel\Hotstream\Contracts\DeletesTeams;
+use HotwiredLaravel\Hotstream\Contracts\UpdatesTeamNames;
+use HotwiredLaravel\Hotstream\Hotstream;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;

@@ -1,10 +1,10 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Tests\Fixtures;
+namespace HotwiredLaravel\Hotstream\Tests\Fixtures;
 
 use App\Models\User as BaseUser;
-use HotwiringLaravel\Hotstream\HasProfilePhoto;
-use HotwiringLaravel\Hotstream\HasTeams;
+use HotwiredLaravel\Hotstream\HasProfilePhoto;
+use HotwiredLaravel\Hotstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends BaseUser

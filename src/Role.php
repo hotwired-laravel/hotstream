@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream;
+namespace HotwiredLaravel\Hotstream;
 
 use JsonSerializable;
 

@@ -1,7 +1,7 @@
 <?php
 
-use HotwiringLaravel\Hotstream\Features;
-use HotwiringLaravel\Hotstream\Http\Middleware\AuthenticateSession;
+use HotwiredLaravel\Hotstream\Features;
+use HotwiredLaravel\Hotstream\Http\Middleware\AuthenticateSession;
 
 return [
 

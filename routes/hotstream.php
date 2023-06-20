@@ -1,25 +1,25 @@
 <?php
 
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Http\Controllers\AcceptedTeamInvitationsController;
-use HotwiringLaravel\Hotstream\Http\Controllers\AccountsController;
-use HotwiringLaravel\Hotstream\Http\Controllers\ConfirmedTwoFactorAuthenticationController;
-use HotwiringLaravel\Hotstream\Http\Controllers\CurrentTeamsController;
-use HotwiringLaravel\Hotstream\Http\Controllers\DeletedDeviceSessionsController;
-use HotwiringLaravel\Hotstream\Http\Controllers\DeviceSessionsController;
-use HotwiringLaravel\Hotstream\Http\Controllers\EnabledTwoFactorAuthenticationController;
-use HotwiringLaravel\Hotstream\Http\Controllers\PasswordController;
-use HotwiringLaravel\Hotstream\Http\Controllers\PrivacyPolicyController;
-use HotwiringLaravel\Hotstream\Http\Controllers\ProfileController;
-use HotwiringLaravel\Hotstream\Http\Controllers\ProfilePictureController;
-use HotwiringLaravel\Hotstream\Http\Controllers\RecoveryCodesController;
-use HotwiringLaravel\Hotstream\Http\Controllers\TeamInvitationsController;
-use HotwiringLaravel\Hotstream\Http\Controllers\TeamsController;
-use HotwiringLaravel\Hotstream\Http\Controllers\TeamUserRoleController;
-use HotwiringLaravel\Hotstream\Http\Controllers\TeamUsersController;
-use HotwiringLaravel\Hotstream\Http\Controllers\TermsOfServiceController;
-use HotwiringLaravel\Hotstream\Http\Controllers\TwoFactorAuthenticationController;
-use HotwiringLaravel\Hotstream\Http\Controllers\UserApiTokensController;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Http\Controllers\AcceptedTeamInvitationsController;
+use HotwiredLaravel\Hotstream\Http\Controllers\AccountsController;
+use HotwiredLaravel\Hotstream\Http\Controllers\ConfirmedTwoFactorAuthenticationController;
+use HotwiredLaravel\Hotstream\Http\Controllers\CurrentTeamsController;
+use HotwiredLaravel\Hotstream\Http\Controllers\DeletedDeviceSessionsController;
+use HotwiredLaravel\Hotstream\Http\Controllers\DeviceSessionsController;
+use HotwiredLaravel\Hotstream\Http\Controllers\EnabledTwoFactorAuthenticationController;
+use HotwiredLaravel\Hotstream\Http\Controllers\PasswordController;
+use HotwiredLaravel\Hotstream\Http\Controllers\PrivacyPolicyController;
+use HotwiredLaravel\Hotstream\Http\Controllers\ProfileController;
+use HotwiredLaravel\Hotstream\Http\Controllers\ProfilePictureController;
+use HotwiredLaravel\Hotstream\Http\Controllers\RecoveryCodesController;
+use HotwiredLaravel\Hotstream\Http\Controllers\TeamInvitationsController;
+use HotwiredLaravel\Hotstream\Http\Controllers\TeamsController;
+use HotwiredLaravel\Hotstream\Http\Controllers\TeamUserRoleController;
+use HotwiredLaravel\Hotstream\Http\Controllers\TeamUsersController;
+use HotwiredLaravel\Hotstream\Http\Controllers\TermsOfServiceController;
+use HotwiredLaravel\Hotstream\Http\Controllers\TwoFactorAuthenticationController;
+use HotwiredLaravel\Hotstream\Http\Controllers\UserApiTokensController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => config('hotstream.middleware', ['web'])], function () {

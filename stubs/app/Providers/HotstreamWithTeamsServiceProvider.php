@@ -10,7 +10,7 @@ use App\Actions\Hotstream\InviteTeamMember;
 use App\Actions\Hotstream\RemoveTeamMember;
 use App\Actions\Hotstream\UpdateTeamName;
 use App\Actions\Hotstream\UpdateUserPicture;
-use HotwiringLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Hotstream;
 use Illuminate\Support\ServiceProvider;
 use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 

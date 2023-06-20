@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Http\Controllers;
+namespace HotwiredLaravel\Hotstream\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;

@@ -3,7 +3,7 @@
 namespace App\Actions\Hotstream;
 
 use App\Models\User;
-use HotwiringLaravel\Hotstream\Contracts\DeletesUsers;
+use HotwiredLaravel\Hotstream\Contracts\DeletesUsers;
 
 class DeleteUser implements DeletesUsers
 {

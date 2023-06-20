@@ -1,8 +1,8 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Http\Controllers;
+namespace HotwiredLaravel\Hotstream\Http\Controllers;
 
-use HotwiringLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Hotstream;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 

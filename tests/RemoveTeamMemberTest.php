@@ -2,11 +2,11 @@
 
 use App\Actions\Hotstream\RemoveTeamMember;
 use App\Models\Team;
-use HotwiringLaravel\Hotstream\Events\RemovingTeamMember;
-use HotwiringLaravel\Hotstream\Events\TeamMemberRemoved;
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\User;
+use HotwiredLaravel\Hotstream\Events\RemovingTeamMember;
+use HotwiredLaravel\Hotstream\Events\TeamMemberRemoved;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;

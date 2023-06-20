@@ -5,11 +5,11 @@ namespace App\Actions\Hotstream;
 use App\Models\Team;
 use App\Models\User;
 use Closure;
-use HotwiringLaravel\Hotstream\Contracts\AddsTeamMembers;
-use HotwiringLaravel\Hotstream\Events\AddingTeamMember;
-use HotwiringLaravel\Hotstream\Events\TeamMemberAdded;
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Rules\Role;
+use HotwiredLaravel\Hotstream\Contracts\AddsTeamMembers;
+use HotwiredLaravel\Hotstream\Events\AddingTeamMember;
+use HotwiredLaravel\Hotstream\Events\TeamMemberAdded;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Rules\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 

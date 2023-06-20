@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Contracts;
+namespace HotwiredLaravel\Hotstream\Contracts;
 
 /**
  * @method void delete(\Illuminate\Foundation\Auth\User $user)

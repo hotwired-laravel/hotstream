@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Events;
+namespace HotwiredLaravel\Hotstream\Events;
 
 class TeamDeleted extends TeamEvent
 {

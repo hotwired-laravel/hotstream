@@ -3,7 +3,7 @@
 namespace App\Actions\Hotstream;
 
 use App\Models\Team;
-use HotwiringLaravel\Hotstream\Contracts\DeletesTeams;
+use HotwiredLaravel\Hotstream\Contracts\DeletesTeams;
 
 class DeleteTeam implements DeletesTeams
 {

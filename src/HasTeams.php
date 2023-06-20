@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream;
+namespace HotwiredLaravel\Hotstream;
 
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
@@ -132,7 +132,7 @@ trait HasTeams
      * Get the role that the user has on the team.
      *
      * @param  mixed  $team
-     * @return \HotwiringLaravel\Hotstream\Role|null
+     * @return \HotwiredLaravel\Hotstream\Role|null
      */
     public function teamRole($team)
     {

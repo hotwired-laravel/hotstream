@@ -40,13 +40,13 @@
     },
     "autoload": {
         "psr-4": {
-            "HotwiringLaravel\\Hotstream\\": "src/",
-            "HotwiringLaravel\\Hotstream\\Database\\Factories\\": "database/factories/"
+            "HotwiredLaravel\\Hotstream\\": "src/",
+            "HotwiredLaravel\\Hotstream\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HotwiringLaravel\\Hotstream\\Tests\\": "tests/",
+            "HotwiredLaravel\\Hotstream\\Tests\\": "tests/",
             "App\\": "stubs/app/",
             "Database\\Factories\\": "database/factories/"
         }
@@ -68,10 +68,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "HotwiringLaravel\\Hotstream\\HotstreamServiceProvider"
+                "HotwiredLaravel\\Hotstream\\HotstreamServiceProvider"
             ],
             "aliases": {
-                "Hotstream": "HotwiringLaravel\\Hotstream\\Hotstream"
+                "Hotstream": "HotwiredLaravel\\Hotstream\\Hotstream"
             }
         }
     },

@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Tests\Fixtures;
+namespace HotwiredLaravel\Hotstream\Tests\Fixtures;
 
 use App\Models\Team;
 use Illuminate\Auth\Access\HandlesAuthorization;

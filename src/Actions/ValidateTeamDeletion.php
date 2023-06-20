@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Actions;
+namespace HotwiredLaravel\Hotstream\Actions;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;

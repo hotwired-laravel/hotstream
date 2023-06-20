@@ -1,9 +1,9 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Http\Controllers;
+namespace HotwiredLaravel\Hotstream\Http\Controllers;
 
-use HotwiringLaravel\Hotstream\Contracts\UpdatesUserPictures;
-use HotwiringLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Contracts\UpdatesUserPictures;
+use HotwiredLaravel\Hotstream\Hotstream;
 use Illuminate\Http\Request;
 
 class ProfilePictureController

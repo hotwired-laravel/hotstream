@@ -1,15 +1,15 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream;
+namespace HotwiredLaravel\Hotstream;
 
-use HotwiringLaravel\Hotstream\Contracts\AddsTeamMembers;
-use HotwiringLaravel\Hotstream\Contracts\CreatesTeams;
-use HotwiringLaravel\Hotstream\Contracts\DeletesTeams;
-use HotwiringLaravel\Hotstream\Contracts\DeletesUsers;
-use HotwiringLaravel\Hotstream\Contracts\InvitesTeamMembers;
-use HotwiringLaravel\Hotstream\Contracts\RemovesTeamMembers;
-use HotwiringLaravel\Hotstream\Contracts\UpdatesTeamNames;
-use HotwiringLaravel\Hotstream\Contracts\UpdatesUserPictures;
+use HotwiredLaravel\Hotstream\Contracts\AddsTeamMembers;
+use HotwiredLaravel\Hotstream\Contracts\CreatesTeams;
+use HotwiredLaravel\Hotstream\Contracts\DeletesTeams;
+use HotwiredLaravel\Hotstream\Contracts\DeletesUsers;
+use HotwiredLaravel\Hotstream\Contracts\InvitesTeamMembers;
+use HotwiredLaravel\Hotstream\Contracts\RemovesTeamMembers;
+use HotwiredLaravel\Hotstream\Contracts\UpdatesTeamNames;
+use HotwiredLaravel\Hotstream\Contracts\UpdatesUserPictures;
 use Illuminate\Support\Arr;
 
 class Hotstream

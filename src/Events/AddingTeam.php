@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Events;
+namespace HotwiredLaravel\Hotstream\Events;
 
 use App\Models\User;
 use Illuminate\Foundation\Events\Dispatchable;

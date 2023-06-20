@@ -1,8 +1,8 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Tests\Fixtures;
+namespace HotwiredLaravel\Hotstream\Tests\Fixtures;
 
-use HotwiringLaravel\Hotstream\HasProfilePhoto;
+use HotwiredLaravel\Hotstream\HasProfilePhoto;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 

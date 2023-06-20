@@ -4,8 +4,8 @@ namespace App\Actions\Hotstream;
 
 use App\Models\Team;
 use App\Models\User;
-use HotwiringLaravel\Hotstream\Contracts\DeletesTeams;
-use HotwiringLaravel\Hotstream\Contracts\DeletesUsers;
+use HotwiredLaravel\Hotstream\Contracts\DeletesTeams;
+use HotwiredLaravel\Hotstream\Contracts\DeletesUsers;
 use Illuminate\Support\Facades\DB;
 
 class DeleteUser implements DeletesUsers

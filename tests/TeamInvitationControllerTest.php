@@ -1,11 +1,11 @@
 <?php
 
 use App\Models\Team;
-use HotwiringLaravel\Hotstream\Contracts\AddsTeamMembers;
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\User;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\WithTeamsFeature;
+use HotwiredLaravel\Hotstream\Contracts\AddsTeamMembers;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\User;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\WithTeamsFeature;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use function Pest\Laravel\actingAs;

@@ -7,7 +7,7 @@
         <x-page-heading>{{ __('Edit Profile') }}</x-page-heading>
 
         <x-form-card>
-            @if (HotwiringLaravel\Hotstream\Hotstream::managesProfilePhotos())
+            @if (HotwiredLaravel\Hotstream\Hotstream::managesProfilePhotos())
             <x-turbo-frame class="block mb-6 transition" id="user-profile">
                 @include('profile-picture._form', ['user' => $user])
             </x-turbo-frame>

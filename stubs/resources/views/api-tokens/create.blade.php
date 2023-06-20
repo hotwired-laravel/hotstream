@@ -17,12 +17,12 @@
                 </div>
 
                 <!-- Token Permissions -->
-                @if (HotwiringLaravel\Hotstream\Hotstream::hasPermissions())
+                @if (HotwiredLaravel\Hotstream\Hotstream::hasPermissions())
                     <div class="col-span-6 mt-4">
                         <x-label for="permissions" value="{{ __('Permissions') }}" />
 
                         <div class="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2">
-                            @foreach (HotwiringLaravel\Hotstream\Hotstream::$permissions as $permission)
+                            @foreach (HotwiredLaravel\Hotstream\Hotstream::$permissions as $permission)
                                 <label class="flex items-center">
                                     <x-checkbox name="permissions[]" :value="$permission"/>
                                     <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ $permission }}</span>

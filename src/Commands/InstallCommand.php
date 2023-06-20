@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Commands;
+namespace HotwiredLaravel\Hotstream\Commands;
 
 use Exception;
 use Illuminate\Console\Command;

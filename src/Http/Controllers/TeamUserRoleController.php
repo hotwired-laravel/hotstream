@@ -1,10 +1,10 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Http\Controllers;
+namespace HotwiredLaravel\Hotstream\Http\Controllers;
 
-use HotwiringLaravel\Hotstream\Actions\UpdateTeamMemberRole;
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Role;
+use HotwiredLaravel\Hotstream\Actions\UpdateTeamMemberRole;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 

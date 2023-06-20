@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\User;
-use HotwiringLaravel\Hotstream\Features;
-use HotwiringLaravel\Hotstream\Mail\TeamInvitation;
+use HotwiredLaravel\Hotstream\Features;
+use HotwiredLaravel\Hotstream\Mail\TeamInvitation;
 use Illuminate\Support\Facades\Mail;
 
 test('validations team member invitation', function ($input, $errors) {

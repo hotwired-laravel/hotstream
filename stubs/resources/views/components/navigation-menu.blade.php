@@ -23,7 +23,7 @@
                 <div class="relative ml-3">
                     <x-dropdown>
                         <x-slot name="trigger">
-                            @if (HotwiringLaravel\Hotstream\Hotstream::managesProfilePhotos())
+                            @if (HotwiredLaravel\Hotstream\Hotstream::managesProfilePhotos())
                                 <a data-turbo-frame="navigation-menu" href="{{ route('accounts.index') }}" class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
                                     @include('profile._current_user_nav_photo', ['id' => 'current-user-nav-photo', 'user' => Auth::user()])
                                 </a>
@@ -66,7 +66,7 @@
                     </x-slot>
                 </x-dropdown>
 
-                @if (HotwiringLaravel\Hotstream\Hotstream::managesProfilePhotos())
+                @if (HotwiredLaravel\Hotstream\Hotstream::managesProfilePhotos())
                     <a href="{{ route('accounts.index') }}" class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
                         @include('profile._current_user_nav_photo', ['id' => 'current-user-nav-photo', 'user' => Auth::user()])
                     </a>

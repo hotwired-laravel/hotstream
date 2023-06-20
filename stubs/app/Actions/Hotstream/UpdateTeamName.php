@@ -4,7 +4,7 @@ namespace App\Actions\Hotstream;
 
 use App\Models\Team;
 use App\Models\User;
-use HotwiringLaravel\Hotstream\Contracts\UpdatesTeamNames;
+use HotwiredLaravel\Hotstream\Contracts\UpdatesTeamNames;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 

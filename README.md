@@ -20,7 +20,7 @@ It comes with [Turbo.js](https://turbo.hotwired.dev/), [Stimulus](https://stimul
 You can install the package via composer:
 
 ```bash
-composer require hotwired/hotstream
+composer require hotwired-laravel/hotstream
 ```
 
 You can install Hotstream by running:

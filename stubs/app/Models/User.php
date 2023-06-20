@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use HotwiringLaravel\Hotstream\HasProfilePhoto;
+use HotwiredLaravel\Hotstream\HasProfilePhoto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

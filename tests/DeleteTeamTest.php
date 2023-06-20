@@ -1,12 +1,12 @@
 <?php
 
 use App\Actions\Hotstream\DeleteTeam;
-use HotwiringLaravel\Hotstream\Actions\ValidateTeamDeletion;
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Models\Team;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\User;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\WithTeamsFeature;
+use HotwiredLaravel\Hotstream\Actions\ValidateTeamDeletion;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Models\Team;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\User;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\WithTeamsFeature;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;

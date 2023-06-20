@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream;
+namespace HotwiredLaravel\Hotstream;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Http\UploadedFile;

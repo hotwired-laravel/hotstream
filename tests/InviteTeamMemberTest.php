@@ -2,9 +2,9 @@
 
 use App\Actions\Hotstream\InviteTeamMember;
 use App\Models\Team;
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\User;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\TeamPolicy;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;

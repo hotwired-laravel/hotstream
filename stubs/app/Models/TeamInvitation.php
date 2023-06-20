@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\Models\TeamInvitation as HotstreamTeamInvitation;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\Models\TeamInvitation as HotstreamTeamInvitation;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TeamInvitation extends HotstreamTeamInvitation

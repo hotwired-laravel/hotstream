@@ -2,10 +2,10 @@
 
 use App\Models\Team;
 use App\Models\User;
-use HotwiringLaravel\Hotstream\Hotstream;
-use HotwiringLaravel\Hotstream\OwnerRole;
-use HotwiringLaravel\Hotstream\Role;
-use HotwiringLaravel\Hotstream\Tests\Fixtures\User as UserFixture;
+use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\Hotstream\OwnerRole;
+use HotwiredLaravel\Hotstream\Role;
+use HotwiredLaravel\Hotstream\Tests\Fixtures\User as UserFixture;
 
 beforeEach(function () {
     Hotstream::$permissions = [];

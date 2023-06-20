@@ -1,6 +1,6 @@
 <?php
 
-namespace HotwiringLaravel\Hotstream\Http\Controllers;
+namespace HotwiredLaravel\Hotstream\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
