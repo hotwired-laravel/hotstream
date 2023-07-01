@@ -107,7 +107,7 @@ class InstallCommand extends Command
     {
         // Install Composer packages...
         if (! $this->requireComposerPackages([
-            'hotwired/stimulus-laravel:^0.2',
+            'hotwired-laravel/stimulus-laravel:^0.3',
             'hotwired/turbo-laravel:^1.12',
             'tonysm/importmap-laravel:^1.4',
             'tonysm/tailwindcss-laravel:^0.10',
@@ -259,7 +259,7 @@ class InstallCommand extends Command
             ->path(base_path())
             ->run([$this->phpBinary(), 'artisan', 'stimulus:publish']);
 
-        $this->components->info('Publshed Stimulus loading');
+        $this->components->info('Published Stimulus loading');
 
         $this->line('');
         $this->components->info('Hotstream scaffolding installed successfully.');
