@@ -2,7 +2,7 @@
     <x-container>
         <x-back-link :href="route('teams.show', $team)">{{ __('Settings for :name', ['name' => $team->name]) }}</x-back-link>
 
-        <x-page-heading>{{ __('Editing Team :name', ['name' => $team->name]) }}</x-page-heading>
+        <x-page-heading>{{ __('Editing Team') }}</x-page-heading>
 
         <x-form-card>
             <x-validation-errors class="mb-4" />
