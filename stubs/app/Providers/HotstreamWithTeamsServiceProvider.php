@@ -11,8 +11,8 @@ use App\Actions\Hotstream\RemoveTeamMember;
 use App\Actions\Hotstream\UpdateTeamName;
 use App\Actions\Hotstream\UpdateUserPicture;
 use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse;
 use Illuminate\Support\ServiceProvider;
-use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
 class HotstreamServiceProvider extends ServiceProvider
 {

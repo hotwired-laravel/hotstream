@@ -3,12 +3,12 @@
 namespace HotwiredLaravel\Hotstream\Http\Controllers;
 
 use HotwiredLaravel\Hotstream\Contracts\DeletesUsers;
+use HotwiredLaravel\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
-use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 
 class ProfileController
 {

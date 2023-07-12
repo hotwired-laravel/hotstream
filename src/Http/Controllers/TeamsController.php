@@ -7,9 +7,9 @@ use HotwiredLaravel\Hotstream\Contracts\CreatesTeams;
 use HotwiredLaravel\Hotstream\Contracts\DeletesTeams;
 use HotwiredLaravel\Hotstream\Contracts\UpdatesTeamNames;
 use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Tonysm\TurboLaravel\Http\Controllers\Concerns\InteractsWithTurboNativeNavigation;
 
 class TeamsController
 {

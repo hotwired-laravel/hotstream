@@ -4,6 +4,7 @@ namespace HotwiredLaravel\Hotstream\Tests;
 
 use HotwiredLaravel\Hotstream\Features;
 use HotwiredLaravel\Hotstream\HotstreamServiceProvider;
+use HotwiredLaravel\TurboLaravel\TurboServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Laravel\Fortify\Features as FortifyFeatures;
@@ -12,7 +13,6 @@ use Orchestra\Testbench\TestCase as Orchestra;
 use Tonysm\ImportmapLaravel\ImportmapLaravelServiceProvider;
 use Tonysm\TailwindCss\TailwindCssServiceProvider;
 use Tonysm\TailwindCss\Testing\InteractsWithTailwind;
-use Tonysm\TurboLaravel\TurboServiceProvider;
 
 class TestCase extends Orchestra
 {

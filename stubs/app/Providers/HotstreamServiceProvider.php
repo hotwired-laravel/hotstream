@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Actions\Hotstream\DeleteUser;
 use HotwiredLaravel\Hotstream\Hotstream;
+use HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse;
 use Illuminate\Support\ServiceProvider;
-use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
 class HotstreamServiceProvider extends ServiceProvider
 {
