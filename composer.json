@@ -35,7 +35,7 @@
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "tonysm/importmap-laravel": "^1.4",
+        "tonysm/importmap-laravel": "^1.5",
         "tonysm/tailwindcss-laravel": "^0.10.1"
     },
     "autoload": {

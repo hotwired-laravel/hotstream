@@ -109,7 +109,7 @@ class InstallCommand extends Command
         if (! $this->requireComposerPackages([
             'hotwired-laravel/stimulus-laravel:^0.3',
             'hotwired-laravel/turbo-laravel:2.x-dev',
-            'tonysm/importmap-laravel:^1.4',
+            'tonysm/importmap-laravel:^1.5',
             'tonysm/tailwindcss-laravel:^0.10',
         ])) {
             return false;
