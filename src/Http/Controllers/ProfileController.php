@@ -12,8 +12,8 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class ProfileController
 {
-    use RedirectsActions;
     use InteractsWithTurboNativeNavigation;
+    use RedirectsActions;
 
     public function edit(Request $request)
     {

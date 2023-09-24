@@ -7,6 +7,7 @@ use HotwiredLaravel\Hotstream\Tests\Fixtures\User;
 use HotwiredLaravel\Hotstream\Tests\Fixtures\WithTeamsFeature;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Sanctum\TransientToken;
+
 use function Pest\Laravel\actingAs;
 
 uses(WithTeamsFeature::class);

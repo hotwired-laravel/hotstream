@@ -9,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends BaseUser
 {
-    use HasApiTokens, HasTeams, HasProfilePhoto;
+    use HasApiTokens, HasProfilePhoto, HasTeams;
 
     /**
      * The attributes that aren't mass assignable.

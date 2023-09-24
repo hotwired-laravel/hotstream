@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Gate;
 
 class TeamsController
 {
-    use RedirectsActions;
     use InteractsWithTurboNativeNavigation;
+    use RedirectsActions;
 
     public function create()
     {
