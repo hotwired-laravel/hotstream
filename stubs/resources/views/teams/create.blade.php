@@ -12,10 +12,10 @@
 
                 <div>
                     <x-label for="name" value="{{ __('Team Name') }}" />
-                    <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" placeholder="{{ __('Acme Inc.') }}" required autofocus autocomplete="teamname" />
+                    <x-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" placeholder="{{ __('Acme Inc.') }}" required autofocus autocomplete="teamname" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-button class="ml-4">
                         {{ __('Create') }}
                     </x-button>

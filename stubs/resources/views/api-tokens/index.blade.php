@@ -7,7 +7,7 @@
         <x-page-heading>{{ __('API Tokens') }}</x-page-heading>
 
         <x-card-section size="lg">
-            <div class="flex items-center justify-end space-x-4">
+            <div class="flex items-center justify-center space-x-4">
                 <x-button-link :href="route('api-tokens.create')" class="flex items-center space-x-2">
                     {{ __('Create Token') }}
                 </x-button-link>
@@ -18,7 +18,7 @@
             <div class="mt-6 space-y-6">
                 @if ($tokens->isEmpty())
                 <div class="hidden only:block">
-                    <p class="text-center dark:text-gray-400">{{ __('No tokens yet.') }}</p>
+                    <p class="text-center text-gray-800 dark:text-gray-400">{{ __('No tokens yet.') }}</p>
                 </div>
                 @endif
 
@@ -36,7 +36,7 @@
                             @endif
 
                             @if (HotwiredLaravel\Hotstream\Hotstream::hasPermissions())
-                                <a href="{{ route('api-tokens.edit', $token) }}" class="cursor-pointer ml-6 text-sm text-gray-400 underline">
+                                <a href="{{ route('api-tokens.edit', $token) }}" class="ml-6 text-sm text-gray-400 underline cursor-pointer">
                                     {{ __('Permissions') }}
                                 </a>
                             @endif
@@ -45,7 +45,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="cursor-pointer ml-6 text-sm text-red-500">
+                                <button type="submit" class="ml-6 text-sm text-red-500 cursor-pointer">
                                     {{ __('Delete') }}
                                 </button>
                             </form>

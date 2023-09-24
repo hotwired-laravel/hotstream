@@ -4,7 +4,7 @@
             {{ __('API Tokens') }}
         </x-back-link>
 
-        <x-page-heading>{{ __('Invite Someone') }}</x-page-heading>
+        <x-page-heading>{{ __('Create API Token') }}</x-page-heading>
 
         <x-form-card>
             <form method="POST" action="{{ route('api-tokens.store') }}">
@@ -32,7 +32,7 @@
                     </div>
                 @endif
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-button class="ml-4">
                         {{ __('Create Token') }}
                     </x-button>

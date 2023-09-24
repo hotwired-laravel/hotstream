@@ -7,7 +7,7 @@
         <x-page-heading>{{ __('Two Factor Authentication') }}</x-page-heading>
 
         <x-card-section>
-            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h3 class="text-lg font-medium text-center text-gray-900 dark:text-gray-100">
                 @if (auth()->user()->hasEnabledTwoFactorAuthentication())
                     {{ __('You have enabled two factor authentication.') }}
                 @else
@@ -15,7 +15,7 @@
                 @endif
             </h3>
 
-            <div class="max-w-xl mt-3 text-sm text-gray-600 dark:text-gray-400">
+            <div class="max-w-xl mt-3 text-center text-gray-800 dark:text-gray-400">
                 <p>
                     {{ __('When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.') }}
                 </p>
@@ -33,7 +33,7 @@
                         data-action="turbo:frame-load->frame-src-removal#remove"
                         @endif
                     >
-                        <div class="space-x-0 space-y-4 md:flex md:items-center md:space-y-0 md:space-x-4">
+                        <div class="flex items-center justify-center space-x-4">
                             <x-secondary-button-link id="show-recovery-code-button" data-turbo-frame="recovery-codes" :href="route('recovery-codes.index')">{{ __('Show Recovery Codes') }}</x-secondary-button-link>
 
                             <form action="{{ route('two-factor-authentication.destroy') }}" method="POST" data-turbo-frame="_top" data-turbo-confirm="{{ __('Are you sure you want to to this?') }}">
@@ -44,7 +44,7 @@
                         </div>
                     </turbo-frame>
                 @else
-                    <form action="{{ route('enabled-two-factor-authentication.store') }}" method="POST">
+                    <form class="flex items-center justify-center" action="{{ route('enabled-two-factor-authentication.store') }}" method="POST">
                         @csrf
                         <x-button type="submit">{{ __('Enable') }}</x-button>
                     </form>

@@ -7,7 +7,7 @@
         <x-page-heading>{{ __('Deleting Account') }}</x-page-heading>
 
         <x-form-card>
-            <p class="mb-6 dark:text-gray-400">
+            <p class="mb-6 text-center text-gray-800 dark:text-gray-400">
                 {{ __('Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
             </p>
 
@@ -25,7 +25,7 @@
                     <x-input-error for="password" class="mt-2" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-danger-button type="submit" class="ml-4">
                         {{ __('Delete Account') }}
                     </x-danger-button>

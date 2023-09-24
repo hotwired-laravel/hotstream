@@ -8,15 +8,15 @@
 
         <x-card-section size="lg">
             <turbo-frame id="recovery-codes" class="contents">
-                <div class="mt-4 max-w-xl text-sm text-gray-600 dark:text-gray-400" data-turbo-temporary>
+                <div class="max-w-xl mt-4 text-center text-gray-800 dark:text-gray-400" data-turbo-temporary>
                     <p class="font-semibold">
                         {{ __('Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.') }}
                     </p>
                 </div>
 
-                <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg" data-turbo-temporary>
+                <div class="grid max-w-xl gap-1 px-4 py-4 mt-4 font-mono text-sm bg-gray-100 rounded-lg" data-turbo-temporary>
                     @foreach (json_decode(decrypt(auth()->user()->two_factor_recovery_codes), true) as $code)
-                        <div>{{ $code }}</div>
+                        <div class="text-center">{{ $code }}</div>
                     @endforeach
                 </div>
 

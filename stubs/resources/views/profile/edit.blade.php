@@ -15,8 +15,8 @@
             <hr class="w-1/4 mx-auto my-6" />
             @endif
 
-            <p class="mb-6 text-sm native:hidden dark:text-gray-400">
-                {{ __('Update your account\'s profile information and email address.') }}</p>
+            <p class="mb-6 text-center text-gray-800 native:hidden dark:text-gray-400">
+                {{ __('Update your profile information and email address.') }}</p>
 
             <form method="POST" action="{{ route('profile.update') }}">
                 @csrf
@@ -36,7 +36,7 @@
                     <x-input-error for="email" class="mt-2" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-button class="ml-4">
                         {{ __('Save') }}
                     </x-button>

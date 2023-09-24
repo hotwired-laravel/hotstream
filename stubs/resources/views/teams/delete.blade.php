@@ -5,7 +5,7 @@
         <x-page-heading>{{ __('Deleting Team :name', ['name' => $team->name]) }}</x-page-heading>
 
         <x-form-card>
-            <p class="mb-6 dark:text-gray-400">
+            <p class="mb-6 text-center text-gray-800 dark:text-gray-400">
                 {{ __('Once a team is deleted, all of its resources and data will be permanently deleted. Before deleting this team, please download any data or information regarding this team that you wish to retain.') }}
             </p>
 
@@ -13,7 +13,7 @@
                 @csrf
                 @method('DELETE')
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-danger-button type="submit" class="ml-4">
                         {{ __('Delete Team') }}
                     </x-danger-button>

@@ -31,7 +31,7 @@
                     </div>
                 @endif
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-button class="ml-4">
                         {{ __('Update') }}
                     </x-button>

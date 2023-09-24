@@ -7,7 +7,7 @@
         <x-page-heading>{{ __('Logging Out Of Other Sessions') }}</x-page-heading>
 
         <x-form-card>
-            <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
+            <div class="max-w-xl text-center text-gray-800 dark:text-gray-400">
                 {{ __('Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.') }}
             </div>
 
@@ -26,7 +26,7 @@
                     <x-input-error for="password" class="mt-2" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-button>
                         {{ __('Log Out Other Browser Sessions') }}
                     </x-button>

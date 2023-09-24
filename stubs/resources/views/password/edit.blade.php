@@ -7,7 +7,7 @@
         <x-page-heading>{{ __('Change Password') }}</x-page-heading>
 
         <x-form-card>
-            <p class="mb-6 text-sm native:hidden dark:text-gray-400">{{ __('Ensure your account is using a long, random password to stay secure.') }}</p>
+            <p class="mb-6 text-center text-gray-800 native:hidden dark:text-gray-400">{{ __('Ensure your account is using a long, random password to stay secure.') }}</p>
 
             <form method="POST" action="{{ route('profile.password.update') }}">
                 @csrf
@@ -31,7 +31,7 @@
                     <x-input-error for="password_confirmation" class="mt-2" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <x-button class="ml-4">
                         {{ __('Save') }}
                     </x-button>
